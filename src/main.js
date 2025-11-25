@@ -3,7 +3,7 @@ var config = {
     canvas_height: 800,
     canvas_id: "game_area", // Specifica il div contenitore
     background_color: 0x0000FF,
-    debug_mode: true,
+    debug_mode: false,
     gravity_value: 1400, // da capire
 };
 
