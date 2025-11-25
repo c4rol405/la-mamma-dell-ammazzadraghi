@@ -17,7 +17,7 @@ function create(s) {
     create_player(s);
     map = PP.assets.image.add(s, img_map, 0, 0, 0, 0);
 
-    floor = PP.shapes.rectangle_add(s, 2141, 3198, 2251, 1, "0x000000", 0); // Creiamo un pavimento "trasparente"
+    floor = PP.shapes.rectangle_add(s, 3236, 3198, 2251, 1, "0x000000", 0); // Creiamo un pavimento "trasparente"
     PP.physics.add(s, floor, PP.physics.type.STATIC); // Aggiungiamo il pavimento alla fisica come entità statica
     PP.physics.add_collider(s, player, floor); // Creiamo un collider tra pavimento e giocatore
 
