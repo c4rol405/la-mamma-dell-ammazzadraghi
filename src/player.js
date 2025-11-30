@@ -7,6 +7,7 @@ let player_speed = 260;
 let floor_height = 200;
 let max_jump_height = 200;
 let jump_size = 15;
+let player_jump = 500
 
 function preload_player(s) {
     img_player = PP.assets.sprite.load_spritesheet(s, "assets/images/spritesheet_player.png", 223, 190);
@@ -34,11 +35,14 @@ function update_player(s) {
             PP.physics.set_velocity_x(player, 0);
     }
 
-    //if(PP.interactive.kb.is_key_down(s, PP.key_codes.SPACE)) {
-    //        if(player.geometry.y >= 619 || player.is_on_platform) {
-    //            PP.physics.set_velocity_y(player, -player_jump);
-    //        }
-    //}
+    //prima era così e non funzionava, il prof diceva di sistemare mettendo is_on_floor oltre che is_on_platform
+    if(PP.interactive.kb.is_key_down(s, PP.key_codes.SPACE)) {
+          if(player.geometry.y >= 619 || player.is_on_platform || player.is_on_floor) {
+            PP.physics.set_velocity_y(player, -player_jump);
+       }
+    }
+
+    /*
     // salta
     if (PP.interactive.kb.is_key_down(s, PP.key_codes.SPACE)) {
         if (player.geometry.y > floor_height - max_jump_height)
@@ -51,9 +55,11 @@ function update_player(s) {
         player.geometry.y += jump_size;
         next_animation = "jump";
     }
+    */
 
 
     player.is_on_platform = false;
+    //fare cose con player.is_on_floor
 
 }
 
