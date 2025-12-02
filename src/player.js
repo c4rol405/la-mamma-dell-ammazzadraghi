@@ -2,19 +2,18 @@ let img_player;
 let player;
 let player_x = 2300; //dove spawna
 let player_y = 3198;
-let player_speed = 400;
+let player_speed = 300;
 
 let floor_height = 200;
 let max_jump_height = 200;
 let jump_size = 15;
-let player_jump = 500
+let player_jump = 700
 
 function preload_player(s) {
     img_player = PP.assets.sprite.load_spritesheet(s, "assets/images/player.png", 4000, 400);
 }
 
 function create_player(s) {
-    player = PP.assets.sprite.add(s, img_player, 150, 220, 0.5, 1);
     player = PP.assets.sprite.add(s, img_player, player_x, player_y, 0.5, 1);
     PP.physics.add(s, player, PP.physics.type.DYNAMIC);
     player.geometry.scale_x = 0.3;
@@ -36,11 +35,12 @@ function update_player(s) {
     }
 
     //prima era così e non funzionava, il prof diceva di sistemare mettendo is_on_floor oltre che is_on_platform
-    if(PP.interactive.kb.is_key_down(s, PP.key_codes.SPACE)) {
-          if(player.geometry.y >= 619 || player.is_on_platform || player.is_on_floor) {
-            PP.physics.set_velocity_y(player, -player_jump);
+      if(PP.interactive.kb.is_key_down(s, PP.key_codes.SPACE)) {
+       if(player.is_on_platform || player.is_on_floor) {
+           PP.physics.set_velocity_y(player, -player_jump);
        }
-    }
+   }
+
 
     /*
     // salta
@@ -56,10 +56,14 @@ function update_player(s) {
         next_animation = "jump";
     }
     */
+   
+   if(PP.interactive.kb.is_key_down(s, PP.key_codes.B)) {
+       create_budino(s);
+   }
 
  
     player.is_on_platform = false;
-    //fare cose con player.is_on_floor
+    player.is_on_floor = false
 
 }
 

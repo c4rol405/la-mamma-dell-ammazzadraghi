@@ -1,11 +1,11 @@
+
 function collision_floor(s, player, floor) {
-    // Funzione di collisione con il floor, devo verificare che il giocatore si trovi sopra
-    // in quel caso aggiorno la variabile che abilita il salto (v. player.js)  
-    if( player.geometry.x >= floor.geometry.x &&
-        player.geometry.x <= floor.geometry.x + floor.geometry.display_width) {
-            player.is_on_floor = true;
-    }
+   // Funzione di collisione con il floor, devo verificare che il giocatore si trovi sopra
+   // in quel caso aggiorno la variabile che abilita il salto (v. player.js) 
+       player.is_on_floor = true
 }
+
+
 
 
 function create_floor(s, player) {
