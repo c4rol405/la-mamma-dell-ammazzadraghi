@@ -58,9 +58,7 @@ function update_player(s) {
     */
    
    if(PP.interactive.kb.is_key_down(s, PP.key_codes.B)) {
-       if (n_budino > 0) {
-           n_budino--;
-       }     
+       create_budino(s);
     }
 
  
