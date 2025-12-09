@@ -28,6 +28,7 @@ function create_budino(s) {
    budino.geometry.scale_y = 0.3;
    PP.physics.add(s, budino, PP.physics.type.STATIC); // nella fisica il giocatore deve essere un'entità dinamica
    PP.physics.add_collider_f(s, player, budino, collision_budino);
+   PP.physics.set_collision_rectangle(budino, 10, 40, 40, 30);
 
 
    if(can_create_budino === false) return; // se non posso creare, esci
