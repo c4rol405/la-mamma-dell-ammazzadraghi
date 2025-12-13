@@ -4,7 +4,7 @@ var config = {
     canvas_id: "game_area", // Specifica il div contenitore
     background_color: 0x000000,
     debug_mode: true,
-    gravity_value: 1200, // da capire
+    gravity_value: 800, // da capire
 };
 
 PP.game.create(config);
