@@ -15,9 +15,9 @@ function preload_meg (s){
 }
 
 function create_meg (s) {
-    meg = PP.assets.sprite.add(s, img_meg, 2700, 3198, 0, 1);
-    PP.physics.add(s, meg, PP.physics.type.DYNAMIC);
-    PP.physics.add_collider (s, meg, floor14);
+    meg = PP.assets.sprite.add(s, img_meg, 2730, 3190, 0, 1);
+    PP.physics.add(s, meg, PP.physics.type.STATIC);
+    //PP.physics.add_collider (s, meg, floor14);
 
     PP.assets.sprite.animation_add(meg, "base", 0, 6, 4, -1);    //meg gira gli occhi
     PP.assets.sprite.animation_add(meg, "padella", 9, 15, 6, 0); //meg fa il gesto della padella

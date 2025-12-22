@@ -1,15 +1,11 @@
 let sprite_player;
 let player;
 
-let player_x = 2400; //dove spawna
-let player_y = 3198;
+let player_x = 2600; //dove spawna
+let player_y = 3190;
 let player_speed = 300;
 
-//let floor_height = 200;
-//let max_jump_height = 200;
-//let jump_size = 15;
 let player_jump = 550;
-//prima era 700?
 
 let hurtable = false;
 
@@ -21,6 +17,11 @@ let curr_anim = "stop"; //animazione corrente
 
 let next_anim;
 next_anim = curr_anim;
+
+let img_cuore;
+let cuori = [];
+let vite_rimanenti = 4;
+PP.game_state.set_variable("Vite", 5);
 
 //let livello = [];
 
@@ -83,36 +84,21 @@ function update_player(s) {
 
     // SALTO
     if(PP.interactive.kb.is_key_down(s, PP.key_codes.SPACE)) {
-       if(player.is_on_platform || player.is_on_floor) {
+       if(player.is_on_platform || player.is_on_floor || player.is_on_casa) {
            PP.physics.set_velocity_y(player, -player_jump);
        }
     }
     player.is_on_platform = false;
-    player.is_on_floor = false 
-
-
-    /*if (jump_disable == false) {
-        if(PP.interactive.kb.is_key_down(s, PP.key_codes.SPACE)) {
-            if(player.is_on_platform || player.is_on_floor) {
-                PP.physics.set_velocity_y(player, -player_jump);
-            }
-        }
-        if (PP.interactive.kb.is_key_down(s, PP.key_codes.DOWN)){
-            PP.camera.start_follow(s, player, -235, -230);
-        }
-        else {
-            PP.camera.start_follow(s, player, -235, 230);
-        }
-    }*/
-
+    player.is_on_floor = false; 
+    player.is_on_casa = false;
     
     // Le animazioni del salto vengono gestite in base alla velocita' verticale
-    if (PP.physics.get_velocity_y(player) < 0) {
+    if (PP.physics.get_velocity_y(player) > 0) {
         if (hurtable == false) {
             next_anim = "jump_down";
         }
     }
-    else if (PP.physics.get_velocity_y(player) > 0) {
+    else if (PP.physics.get_velocity_y(player) < 0) {
         if (hurtable == false) {
             next_anim = "jump_up";
         }
@@ -126,7 +112,6 @@ function update_player(s) {
         PP.assets.sprite.animation_play(player, next_anim);
     }
 
-
     // Logica per specchiare il giocatore:
     if (PP.physics.get_velocity_x(player) < 0) {
         player.geometry.flip_x = true;
@@ -134,9 +119,6 @@ function update_player(s) {
     else if (PP.physics.get_velocity_x(player) > 0) {
         player.geometry.flip_x = false;
     }
-
-
-
 }
 
 // FUNZIONE PER IL SALTO IN COLLISIONE
@@ -149,8 +131,49 @@ function salto (s, obj1, obj2) {
     }
 }
 
+function preload_vite(s) {
+    PP.game_state.set_variable("Vite", 5);
+    vite_rimanenti = 4;
+    cuori = [];
+    img_cuore = PP.assets.image.load(s, "assets/icone/home_icona.png", 150, 156);
+}
 
-/*
+function create_vite(s) {
+    for (let i = 0; i < PP.game_state.get_variable("Vite"); i++) {
+        let cuore = PP.assets.image.add(s, img_cuore, 50 + i * 50, 20, 0, 0);
+        cuore.tile_geometry.scroll_factor_x = 0;
+        cuore.tile_geometry.scroll_factor_y = 0;
+        cuori.push(cuore);
+    }
+}
+
+if (!invincibilità) {
+    vita_persa(s);
+}
+
+function vita_persa(s) {
+    if (invincibilità) return;  // 👈 BLOCCO DANNI MULTIPLI
+
+    PP.assets.destroy(cuori[vite_rimanenti]);
+    vite_rimanenti--;
+
+    let prev_score = PP.game_state.get_variable("Vite");
+    PP.game_state.set_variable("Vite", prev_score - 1);
+
+    danno(s);
+
+    if (PP.game_state.get_variable("Vite") <= 0) {
+        PP.assets.destroy(cuori[0]);
+        morte(s);
+    }
+}
+
+function collisione_nemico(s, player, enemy) {
+    if (!invincibilità) {
+        vita_persa(s);
+    }
+}
+
 function morte(s) {
     move_disable = true;
     jump_disable = true;
@@ -162,7 +185,7 @@ function morte(s) {
     console.log(next_anim);
     PP.assets.sprite.animation_play(player, next_anim);
     PP.timers.add_timer(s, 1000, game_over, false);
-} */
+}
 
 /*
 function game_over(s) {
@@ -178,10 +201,10 @@ function game_over(s) {
         PP.scenes.start("morte3");
         return;
     }
-}
-*/
+} */
 
-function hurt(s) {
+
+function danno(s) {
     hurtable = true;
     invincibilità = true;
     next_anim = "hurt";
@@ -190,16 +213,16 @@ function hurt(s) {
     PP.physics.set_velocity_x(player, -200);
     PP.physics.set_velocity_y(player, -300);
     PP.assets.sprite.animation_stop(player);
-    PP.timers.add_timer(s, 1000, end_hurt, false);
-    /*let prev_score = PP.game_state.get_variable("Monete");
+    PP.timers.add_timer(s,1000, fine_danno, false);
+    let prev_score = PP.game_state.get_variable("Vetri");
         if (prev_score > 0)
         {
-            PP.game_state.set_variable("Monete", prev_score-1);
+            PP.game_state.set_variable("Vetri", prev_score-1);
         }
-    */
+    
 }
 
-function end_hurt(s) {
+function fine_danno(s) {
     hurtable = false;
     invincibilità = false;
     move_disable = false;

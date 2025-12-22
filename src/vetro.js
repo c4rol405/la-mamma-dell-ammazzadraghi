@@ -17,7 +17,7 @@ function collision_vetro(s, player, vetro) {
 }
 
 function create_vetro(s, player) {
-    let vetro1 = PP.assets.image.add(s, img_verde, 3800, 2850, 0, 0);
+    let vetro1 = PP.assets.image.add(s, img_verde, 3760, 2800, 0, 0);
     PP.physics.add(s, vetro1, PP.physics.type.STATIC);
     PP.physics.add_overlap_f(s, player, vetro1, collision_vetro);
     PP.physics.set_collision_rectangle(vetro1, 40, 40, 14, 14);
