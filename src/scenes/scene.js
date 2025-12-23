@@ -7,7 +7,7 @@ let txt_vetri;
 
 function preload(s) {
     //assets grafici
-    img_map = PP.assets.image.load(s, "assets/images/mappa2.png");
+    img_map = PP.assets.image.load(s, "assets/images/mappa.png");
 
     //elementi js
     preload_player(s);
@@ -18,7 +18,7 @@ function preload(s) {
     preload_dialogo (s);
     preload_enemy(s);
     preload_vetro(s);
-    preload_hud (s);
+    //preload_hud (s);
 }
 
 function create(s) {
@@ -33,13 +33,14 @@ function create(s) {
 
     create_floor(s, player);
     create_platform(s, player);
+    create_lava(s, player);
     create_meg(s);
     create_dialogo(s);
     create_enemy(s, player);
     configure_player_animations(s);
     create_vetro(s, player);
     create_casa(s, player);
-    create_hud (s);
+    //create_hud (s);
 
     // Creo una variabile per lo "score" della scena
     /*PP.gameState.set_variable("score", 0);
@@ -64,6 +65,7 @@ function update(s) {
     */
 
     update_player(s);
+    update_vite(s);
     update_platform(s, player);
     update_budino(s, player);
     update_meg (s);

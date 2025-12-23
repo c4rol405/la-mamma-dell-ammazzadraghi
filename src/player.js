@@ -23,8 +23,6 @@ let cuori = [];
 let vite_rimanenti = 4;
 PP.game_state.set_variable("Vite", 5);
 
-//let livello = [];
-
 function configure_player_animations(s) {
     // Configuro le animazioni secondo lo spritesheet
     PP.assets.sprite.animation_add(player, "walk", 10, 17, 12, -1);
@@ -91,6 +89,7 @@ function update_player(s) {
     player.is_on_platform = false;
     player.is_on_floor = false; 
     player.is_on_casa = false;
+    player.is_on_lava = false;
     
     // Le animazioni del salto vengono gestite in base alla velocita' verticale
     if (PP.physics.get_velocity_y(player) > 0) {
@@ -147,8 +146,15 @@ function create_vite(s) {
     }
 }
 
-if (!invincibilità) {
-    vita_persa(s);
+function update_vite(s) {
+
+    let cam_x = PP.camera.get_scroll_x(s);
+    let cam_y = PP.camera.get_scroll_y(s);
+
+    for (let i = 0; i < cuori.length; i++) {
+        cuori[i].geometry.x = cam_x + 30 + i * 50;
+        cuori[i].geometry.y = cam_y + 20;
+    }
 }
 
 function vita_persa(s) {
@@ -187,12 +193,12 @@ function morte(s) {
     PP.timers.add_timer(s, 1000, game_over, false);
 }
 
-/*
 function game_over(s) {
-    if (livello[0] == 1){
-        PP.scenes.start("morte");
+    if (player.is_on_lava){
+        PP.scenes.start("gameover1");
         return;
     }
+    /*
     if (livello[0] == 2){
         PP.scenes.start("morte2");
         return;
@@ -200,8 +206,8 @@ function game_over(s) {
     if (livello[0] == 3){
         PP.scenes.start("morte3");
         return;
-    }
-} */
+    } */
+}
 
 
 function danno(s) {

@@ -146,6 +146,28 @@ function create_platform(s, player) {
     PP.physics.add(s, platform21, PP.physics.type.STATIC);
     PP.physics.add_collider_f(s, player, platform21, collision_platform);
     PP.physics.set_collision_rectangle(platform21, 140, 50, 0, 10);
+
+    platform22 = PP.assets.image.add(s, img_platform3, 5450, 3650, 0, 0);
+    PP.physics.add(s, platform22, PP.physics.type.STATIC); 
+    PP.physics.add_collider_f(s, player, platform22, collision_platform);
+    PP.physics.set_collision_rectangle(platform22, 250, 50, 10, 30);
+    platform23 = PP.assets.image.add(s, img_platform5, 4980, 3750, 0, 0);
+    PP.physics.add(s, platform23, PP.physics.type.STATIC); 
+    PP.physics.add_collider_f(s, player, platform23, collision_platform);
+    PP.physics.set_collision_rectangle(platform23, 250, 50, 10, 10);
+
+    platform24 = PP.assets.image.add(s, img_platform7, 5280, 3850, 0, 0); //piattaforma mobile verticale
+    PP.physics.add(s, platform24, PP.physics.type.DYNAMIC); 
+    PP.physics.set_immovable(platform24, true);
+    PP.physics.set_allow_gravity(platform24, false);    
+    PP.physics.add_collider_f(s, player, platform24, collision_platform);
+    PP.physics.set_velocity_y(platform24, 70);
+    PP.physics.set_collision_rectangle(platform24, 150, 50, 10, 10);
+
+    platform25 = PP.assets.image.add(s, img_platform5, 5470, 4150, 0, 0);
+    PP.physics.add(s, platform25, PP.physics.type.STATIC); 
+    PP.physics.add_collider_f(s, player, platform25, collision_platform);
+    PP.physics.set_collision_rectangle(platform25, 250, 50, 10, 10);
 }
 
 function update_platform(s) {
@@ -157,5 +179,13 @@ function update_platform(s) {
     else if(platform2.geometry.x <= 3600) {     //limite sinistro
         PP.physics.set_velocity_x(platform2, 100);
     }
+
+    if(platform24.geometry.y >= 4100) {      //limite basso
+        PP.physics.set_velocity_y(platform24, -100);
+    }
+    else if(platform24.geometry.y <= 3800) {     //limite alto
+        PP.physics.set_velocity_y(platform24, 100);
+    }
+
 
 }
