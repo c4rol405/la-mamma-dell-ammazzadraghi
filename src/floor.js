@@ -5,55 +5,55 @@ function collision_floor(s, player, floor) {
 }
 
 function create_floor(s, player) {
-    floor1 = PP.shapes.rectangle_add(s, 1786, 3942, 643, 2200, "0x000000", 0);
+    floor1 = PP.shapes.rectangle_add(s, 1820, 4130, 740, 1840, "0x000000", 0); 
     PP.physics.add(s, floor1, PP.physics.type.STATIC);
     PP.physics.add_collider_f(s, player, floor1, collision_floor);
 
-    floor2 = PP.shapes.rectangle_add(s, 2150, 4130, 80, 1820, "0x000000", 0);
+    floor2 = PP.shapes.rectangle_add(s, 1576, 3060, 1063, 450, "0x000000", 0);
     PP.physics.add(s, floor2, PP.physics.type.STATIC);
     PP.physics.add_collider_f(s, player, floor2, collision_floor);
 
-    floor3 = PP.shapes.rectangle_add(s, 2010, 2750, 200, 226, "0x000000", 0);
+    floor3 = PP.shapes.rectangle_add(s, 2010, 2730, 200, 350, "0x000000", 0);
     PP.physics.add(s, floor3, PP.physics.type.STATIC);
     PP.physics.add_collider_f(s, player, floor3, collision_floor);
 
-    floor4 = PP.shapes.rectangle_add(s, 2224, 2512, 630, 250, "0x000000", 0);
+    floor4 = PP.shapes.rectangle_add(s, 2220, 2512, 620, 280, "0x000000", 0);
     PP.physics.add(s, floor4, PP.physics.type.STATIC);
     PP.physics.add_collider_f(s, player, floor4, collision_floor);
 
-    floor5 = PP.shapes.rectangle_add(s, 1258, 1552, 2700, 548, "0x000000", 0);
+    floor5 = PP.shapes.rectangle_add(s, 1258, 1562, 2700, 548, "0x000000", 0);
     PP.physics.add(s, floor5, PP.physics.type.STATIC);
     PP.physics.add_collider_f(s, player, floor5, collision_floor);
 
-    floor6 = PP.shapes.rectangle_add(s, 376, 2024, 900, 554, "0x000000", 0);
+    floor6 = PP.shapes.rectangle_add(s, 390, 2024, 900, 554, "0x000000", 0);
     PP.physics.add(s, floor6, PP.physics.type.STATIC);
     PP.physics.add_collider_f(s, player, floor6, collision_floor);
 
-    floor7 = PP.shapes.rectangle_add(s, 408 , 960 , 3000, 640, "0x000000", 0);
+    floor7 = PP.shapes.rectangle_add(s, 430, 660 , 3000, 1250, "0x000000", 0);
     PP.physics.add(s, floor7, PP.physics.type.STATIC);
     PP.physics.add_collider_f(s, player, floor7, collision_floor);
 
-    floor8 = PP.shapes.rectangle_add(s, 4415, 996, 1610, 712, "0x000000", 0);
+    floor8 = PP.shapes.rectangle_add(s, 4330, 996, 1500, 712, "0x000000", 0);
     PP.physics.add(s, floor8, PP.physics.type.STATIC);
     PP.physics.add_collider_f(s, player, floor8, collision_floor);
 
-    floor9 = PP.shapes.rectangle_add(s, 3820, 358, 2500, 720, "0x000000", 0);
+    floor9 = PP.shapes.rectangle_add(s, 3804, 400, 2550, 740, "0x000000", 0);
     PP.physics.add(s, floor9, PP.physics.type.STATIC);
     PP.physics.add_collider_f(s, player, floor9, collision_floor);
 
-    floor10 = PP.shapes.rectangle_add(s, 3280, 2240, 458, 710, "0x000000", 0);
+    floor10 = PP.shapes.rectangle_add(s, 3274, 2240, 458, 710, "0x000000", 0);
     PP.physics.add(s, floor10, PP.physics.type.STATIC);
     PP.physics.add_collider_f(s, player, floor10, collision_floor);
 
-    floor11 = PP.shapes.rectangle_add(s, 5320, 2240, 2300, 704, "0x000000", 0);
+    floor11 = PP.shapes.rectangle_add(s, 5270, 2244, 2250, 704, "0x000000", 0);
     PP.physics.add(s, floor11, PP.physics.type.STATIC);
     PP.physics.add_collider_f(s, player, floor11, collision_floor);
 
-    floor12 = PP.shapes.rectangle_add(s, 6240, 1620, 462, 580, "0x000000", 0);
+    floor12 = PP.shapes.rectangle_add(s, 6240, 1680, 462, 700, "0x000000", 0);
     PP.physics.add(s, floor12, PP.physics.type.STATIC);
     PP.physics.add_collider_f(s, player, floor12, collision_floor);
 
-    floor13 = PP.shapes.rectangle_add(s, 6174, 998, 586, 710, "0x000000", 0);
+    floor13 = PP.shapes.rectangle_add(s, 6170, 1002, 600, 710, "0x000000", 0);
     PP.physics.add(s, floor13, PP.physics.type.STATIC);
     PP.physics.add_collider_f(s, player, floor13, collision_floor);
 
@@ -65,7 +65,7 @@ function create_floor(s, player) {
     PP.physics.add(s, floor15, PP.physics.type.STATIC);
     PP.physics.add_collider_f(s, player, floor15, collision_floor);
 
-    floor16 = PP.shapes.rectangle_add(s, 6440, 5858, 1140, 2000, "0x000000", 0);
+    floor16 = PP.shapes.rectangle_add(s, 6440, 5860, 1140, 2000, "0x000000", 0);
     PP.physics.add(s, floor16, PP.physics.type.STATIC);
     PP.physics.add_collider_f(s, player, floor16, collision_floor);
 
@@ -73,7 +73,7 @@ function create_floor(s, player) {
     PP.physics.add(s, floor17, PP.physics.type.STATIC);
     PP.physics.add_collider_f(s, player, floor17, collision_floor);
 
-    floor18 = PP.shapes.rectangle_add(s, 2770, 5840, 310, 1855, "0x000000", 0);
+    floor18 = PP.shapes.rectangle_add(s, 2770, 5844, 310, 1855, "0x000000", 0);
     PP.physics.add(s, floor18, PP.physics.type.STATIC);
     PP.physics.add_collider_f(s, player, floor18, collision_floor);
 
@@ -81,15 +81,15 @@ function create_floor(s, player) {
     PP.physics.add(s, floor19, PP.physics.type.STATIC);
     PP.physics.add_collider_f(s, player, floor19, collision_floor);
 
-    floor20 = PP.shapes.rectangle_add(s, 7780, 3600, 3000, 800, "0x000000", 0);
+    floor20 = PP.shapes.rectangle_add(s, 8116, 3560, 3500, 800, "0x000000", 0);
     PP.physics.add(s, floor20, PP.physics.type.STATIC);
     PP.physics.add_collider_f(s, player, floor20, collision_floor);
 
-    floor21 = PP.shapes.rectangle_add(s, 9038, 2800, 200, 2000, "0x000000", 0);
+    floor21 = PP.shapes.rectangle_add(s, 9786, 2800, 200, 2000, "0x000000", 0);
     PP.physics.add(s, floor21, PP.physics.type.STATIC);
     PP.physics.add_collider_f(s, player, floor21, collision_floor);
 
-    floor22 = PP.shapes.rectangle_add(s, 8630, 1320, 3000, 1355, "0x000000", 0);
+    floor22 = PP.shapes.rectangle_add(s, 8590, 1270, 3000, 1314, "0x000000", 0);
     PP.physics.add(s, floor22, PP.physics.type.STATIC);
     PP.physics.add_collider_f(s, player, floor22, collision_floor);
 
@@ -101,11 +101,11 @@ function create_floor(s, player) {
     PP.physics.add(s, floor24, PP.physics.type.STATIC);
     PP.physics.add_collider_f(s, player, floor24, collision_floor);
 
-    floor25 = PP.shapes.rectangle_add(s, 5000, 30, 10000, 100, "0x000000", 0);
+    floor25 = PP.shapes.rectangle_add(s, 5000, 30, 10000, 150, "0x000000", 0);
     PP.physics.add(s, floor25, PP.physics.type.STATIC);
     PP.physics.add_collider_f(s, player, floor25, collision_floor);
 
-    floor26 = PP.shapes.rectangle_add(s, 7642 , 500, 100, 1000, "0x000000", 0);
+    floor26 = PP.shapes.rectangle_add(s, 8642, 1010, 2100, 2020, "0x000000", 0);
     PP.physics.add(s, floor26, PP.physics.type.STATIC);
     PP.physics.add_collider_f(s, player, floor26, collision_floor);
 
@@ -113,13 +113,15 @@ function create_floor(s, player) {
     PP.physics.add(s, floor27, PP.physics.type.STATIC);
     PP.physics.add_collider_f(s, player, floor27, collision_floor);
 
-    floor28 = PP.shapes.rectangle_add(s, 7650, 5730, 2000, 100, "0x000000", 0);
+    floor28 = PP.shapes.rectangle_add(s, 1080, 3188, 700, 170, "0x000000", 0);
     PP.physics.add(s, floor28, PP.physics.type.STATIC);
     PP.physics.add_collider_f(s, player, floor28, collision_floor);
 
-    floor29 = PP.shapes.rectangle_add(s, 8408, 5400, 100, 900, "0x000000", 0);
+    floor29 = PP.shapes.rectangle_add(s, 9300, 2220, 800, 800, "0x000000", 0);
     PP.physics.add(s, floor29, PP.physics.type.STATIC);
     PP.physics.add_collider_f(s, player, floor29, collision_floor);
+
+    
 }
 
 

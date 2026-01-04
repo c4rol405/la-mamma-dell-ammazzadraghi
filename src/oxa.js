@@ -1,18 +1,9 @@
-let casa1
-let casa2
-let casa3
-let casa4
-let casa5
-let casa6
-let casa7
-let casa8
-let casa9
-
 function collision_casa(s, player, casa) {
     player.is_on_casa = true;
 }
 
 function create_casa(s, player) {
+    //CASE VILLAGGIO
     casa1 = PP.shapes.rectangle_add(s, 6740, 2840, 290, 1, "0x000000", 0);
     PP.physics.add(s, casa1, PP.physics.type.STATIC); 
     PP.physics.add_collider_f(s, player, casa1, collision_casa);
@@ -34,11 +25,120 @@ function create_casa(s, player) {
     casa7 = PP.shapes.rectangle_add(s, 7810, 2910, 300, 1, "0x000000", 0);
     PP.physics.add(s, casa7, PP.physics.type.STATIC); 
     PP.physics.add_collider_f(s, player, casa7, collision_casa);
-    casa8 = PP.shapes.rectangle_add(s, 8190, 3064, 160, 1, "0x000000", 0);
+    casa8 = PP.shapes.rectangle_add(s, 8194, 2750, 160, 1, "0x000000", 0);
     PP.physics.add(s, casa8, PP.physics.type.STATIC); 
     PP.physics.add_collider_f(s, player, casa8, collision_casa);
-    casa9 = PP.shapes.rectangle_add(s, 8550, 3128, 200, 1, "0x000000", 0);
+    casa9 = PP.shapes.rectangle_add(s, 8550, 2950, 230, 1, "0x000000", 0);
     PP.physics.add(s, casa9, PP.physics.type.STATIC); 
     PP.physics.add_collider_f(s, player, casa9, collision_casa);
+    //PIATTAFORME NELLO SFONDO
+    mappa1 = PP.shapes.rectangle_add(s, 4430, 3210, 160, 1, "0x000000", 0);
+    PP.physics.add(s, mappa1, PP.physics.type.STATIC); 
+    PP.physics.add_collider_f(s, player, mappa1, collision_casa);
+    mappa2 = PP.shapes.rectangle_add(s, 6270, 3160, 230, 1, "0x000000", 0);
+    PP.physics.add(s, mappa2, PP.physics.type.STATIC); 
+    PP.physics.add_collider_f(s, player, mappa2, collision_casa);
+    mappa3 = PP.shapes.rectangle_add(s, 4080, 1892, 200, 1, "0x000000", 0);
+    PP.physics.add(s, mappa3, PP.physics.type.STATIC); 
+    PP.physics.add_collider_f(s, player, mappa3, collision_casa);
+    mappa4 = PP.shapes.rectangle_add(s, 2590, 2372, 200, 1, "0x000000", 0);
+    PP.physics.add(s, mappa4, PP.physics.type.STATIC); 
+    PP.physics.add_collider_f(s, player, mappa4, collision_casa);
+    mappa5 = PP.shapes.rectangle_add(s, 3000, 2490, 200, 1, "0x000000", 0);
+    PP.physics.add(s, mappa5, PP.physics.type.STATIC); 
+    PP.physics.add_collider_f(s, player, mappa5, collision_casa);
+    mappa6 = PP.shapes.rectangle_add(s, 1830, 2372, 200, 1, "0x000000", 0);
+    PP.physics.add(s, mappa6, PP.physics.type.STATIC); 
+    PP.physics.add_collider_f(s, player, mappa6, collision_casa);
+    mappa7 = PP.shapes.rectangle_add(s, 2728, 1288, 250, 1, "0x000000", 0);
+    PP.physics.add(s, mappa7, PP.physics.type.STATIC); 
+    PP.physics.add_collider_f(s, player, mappa7, collision_casa);
+    mappa8 = PP.shapes.rectangle_add(s, 2440, 508, 200, 1, "0x000000", 0);
+    PP.physics.add(s, mappa8, PP.physics.type.STATIC); 
+    PP.physics.add_collider_f(s, player, mappa8, collision_casa);
+    mappa9 = PP.shapes.rectangle_add(s, 2050, 330, 400, 1, "0x000000", 0);
+    PP.physics.add(s, mappa9, PP.physics.type.STATIC); 
+    PP.physics.add_collider_f(s, player, mappa9, collision_casa);
+    mappa10 = PP.shapes.rectangle_add(s, 5200, 248, 200, 1, "0x000000", 0);
+    PP.physics.add(s, mappa10, PP.physics.type.STATIC); 
+    PP.physics.add_collider_f(s, player, mappa10, collision_casa);
+    mappa11 = PP.shapes.rectangle_add(s, 7590, 248, 200, 1, "0x000000", 0);
+    PP.physics.add(s, mappa11, PP.physics.type.STATIC); 
+    PP.physics.add_collider_f(s, player, mappa11, collision_casa);
+    mappa12 = PP.shapes.rectangle_add(s, 5820, 648, 200, 1, "0x000000", 0);
+    PP.physics.add(s, mappa12, PP.physics.type.STATIC); 
+    PP.physics.add_collider_f(s, player, mappa12, collision_casa);
+    mappa13 = PP.shapes.rectangle_add(s, 6530, 648, 250, 1, "0x000000", 0);
+    PP.physics.add(s, mappa13, PP.physics.type.STATIC); 
+    PP.physics.add_collider_f(s, player, mappa13, collision_casa);
+    mappa14 = PP.shapes.rectangle_add(s, 5620, 3686, 250, 1, "0x000000", 0);
+    PP.physics.add(s, mappa14, PP.physics.type.STATIC); 
+    PP.physics.add_collider_f(s, player, mappa14, collision_casa);
+    mappa15 = PP.shapes.rectangle_add(s, 5630, 4170, 250, 1, "0x000000", 0);
+    PP.physics.add(s, mappa15, PP.physics.type.STATIC); 
+    PP.physics.add_collider_f(s, player, mappa15, collision_casa);
+    mappa16 = PP.shapes.rectangle_add(s, 5780, 4860, 240, 1, "0x000000", 0);
+    PP.physics.add(s, mappa16, PP.physics.type.STATIC); 
+    PP.physics.add_collider_f(s, player, mappa16, collision_casa);
+    mappa17 = PP.shapes.rectangle_add(s, 4730, 5498, 280, 1, "0x000000", 0);
+    PP.physics.add(s, mappa17, PP.physics.type.STATIC); 
+    PP.physics.add_collider_f(s, player, mappa17, collision_casa);
+    mappa18 = PP.shapes.rectangle_add(s, 1420, 5520, 400, 1, "0x000000", 0);
+    PP.physics.add(s, mappa18, PP.physics.type.STATIC); 
+    PP.physics.add_collider_f(s, player, mappa18, collision_casa);
+    mappa19 = PP.shapes.rectangle_add(s, 740, 6004, 400, 1, "0x000000", 0);
+    PP.physics.add(s, mappa19, PP.physics.type.STATIC); 
+    PP.physics.add_collider_f(s, player, mappa19, collision_casa);
+    mappa20 = PP.shapes.rectangle_add(s, 180, 5826, 300, 1, "0x000000", 0);
+    PP.physics.add(s, mappa20, PP.physics.type.STATIC); 
+    PP.physics.add_collider_f(s, player, mappa20, collision_casa);
+    mappa21 = PP.shapes.rectangle_add(s, 170, 4756, 300, 1, "0x000000", 0);
+    PP.physics.add(s, mappa21, PP.physics.type.STATIC); 
+    PP.physics.add_collider_f(s, player, mappa21, collision_casa);
+    mappa22 = PP.shapes.rectangle_add(s, 170, 3132, 300, 1, "0x000000", 0);
+    PP.physics.add(s, mappa22, PP.physics.type.STATIC); 
+    PP.physics.add_collider_f(s, player, mappa22, collision_casa);
+    mappa23 = PP.shapes.rectangle_add(s, 180, 2470, 300, 1, "0x000000", 0);
+    PP.physics.add(s, mappa23, PP.physics.type.STATIC); 
+    PP.physics.add_collider_f(s, player, mappa23, collision_casa);
+    mappa24 = PP.shapes.rectangle_add(s, 904, 2030, 300, 1, "0x000000", 0);
+    PP.physics.add(s, mappa24, PP.physics.type.STATIC); 
+    PP.physics.add_collider_f(s, player, mappa24, collision_casa);
+    mappa25 = PP.shapes.rectangle_add(s, 6576, 1194, 210, 1, "0x000000", 0);
+    PP.physics.add(s, mappa25, PP.physics.type.STATIC); 
+    PP.physics.add_collider_f(s, player, mappa25, collision_casa);
+    mappa26 = PP.shapes.rectangle_add(s, 6580, 1622, 210, 1, "0x000000", 0);
+    PP.physics.add(s, mappa26, PP.physics.type.STATIC); 
+    PP.physics.add_collider_f(s, player, mappa26, collision_casa);
+    mappa27 = PP.shapes.rectangle_add(s, 7030, 1412, 250, 1, "0x000000", 0);
+    PP.physics.add(s, mappa27, PP.physics.type.STATIC); 
+    PP.physics.add_collider_f(s, player, mappa27, collision_casa);
+    mappa28 = PP.shapes.rectangle_add(s, 6994, 1824, 200, 1, "0x000000", 0);
+    PP.physics.add(s, mappa28, PP.physics.type.STATIC); 
+    PP.physics.add_collider_f(s, player, mappa28, collision_casa);
+    mappa29 = PP.shapes.rectangle_add(s, 1250, 3816, 550, 1, "0x000000", 0);
+    PP.physics.add(s, mappa29, PP.physics.type.STATIC); 
+    PP.physics.add_collider_f(s, player, mappa29, collision_casa);
+    mappa30 = PP.shapes.rectangle_add(s, 2500, 5248, 250, 1, "0x000000", 0);
+    PP.physics.add(s, mappa30, PP.physics.type.STATIC); 
+    PP.physics.add_collider_f(s, player, mappa30, collision_casa);
+    mappa31 = PP.shapes.rectangle_add(s, 2560, 4916, 200, 1, "0x000000", 0);
+    PP.physics.add(s, mappa31, PP.physics.type.STATIC); 
+    PP.physics.add_collider_f(s, player, mappa31, collision_casa);
+    mappa32 = PP.shapes.rectangle_add(s, 3026, 5120, 250, 1, "0x000000", 0);
+    PP.physics.add(s, mappa32, PP.physics.type.STATIC); 
+    PP.physics.add_collider_f(s, player, mappa32, collision_casa);
+    mappa33 = PP.shapes.rectangle_add(s, 3492, 4960, 250, 1, "0x000000", 0);
+    PP.physics.add(s, mappa33, PP.physics.type.STATIC); 
+    PP.physics.add_collider_f(s, player, mappa33, collision_casa);
+
+    mappa34 = PP.shapes.rectangle_add(s, 5130, 4614, 250, 1, "0x000000", 0);
+    PP.physics.add(s, mappa34, PP.physics.type.STATIC); 
+    PP.physics.add_collider_f(s, player, mappa34, collision_casa);
+    mappa35 = PP.shapes.rectangle_add(s, 5094, 3764, 250, 1, "0x000000", 0);
+    PP.physics.add(s, mappa35, PP.physics.type.STATIC); 
+    PP.physics.add_collider_f(s, player, mappa35, collision_casa);
+
+    //ne mancano 8, 4 su di pietra, 4 giu nella grotta
 }
 

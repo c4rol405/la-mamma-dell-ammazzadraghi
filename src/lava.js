@@ -1,7 +1,11 @@
+let is_dead = false;
+
 function collision_lava(s, player, lava) {
-    player.is_on_lava = true;
-    morte(s); //da capire perché non c'è animazione in cui cade
-    PP.timers.add_timer(s, 1000, () => {PP.scenes.start("gameover1");}, false);
+    if (is_dead) return;
+
+    is_dead = true;
+    death_cause = "lava";
+    morte(s);
 }
 
 function create_lava(s, player) {
@@ -20,4 +24,7 @@ function create_lava(s, player) {
     lava5 = PP.shapes.rectangle_add(s, 1300, 6030, 1000, 100, "0x000000", 0);
         PP.physics.add(s, lava5, PP.physics.type.STATIC);
         PP.physics.add_collider_f(s, player, lava5, collision_lava);
+    lava6 = PP.shapes.rectangle_add(s, 1080, 3130, 500, 100, "0x000000", 0);
+        PP.physics.add(s, lava6, PP.physics.type.STATIC);
+        PP.physics.add_collider_f(s, player, lava6, collision_lava);
 }

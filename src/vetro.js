@@ -22,12 +22,12 @@ function create_vetro(s, player) {
     PP.physics.add_overlap_f(s, player, vetro1, collision_vetro);
     PP.physics.set_collision_rectangle(vetro1, 40, 40, 14, 14);
 
-    let vetro2 = PP.assets.image.add(s, img_rosa, 4380, 3180, 0, 0);
+    let vetro2 = PP.assets.image.add(s, img_rosa, 4386, 3150, 0, 0);
     PP.physics.add(s, vetro2, PP.physics.type.STATIC);
     PP.physics.add_overlap_f(s, player, vetro2, collision_vetro);
     PP.physics.set_collision_rectangle(vetro2, 40, 40, 14, 14);
 
-    let vetro3 = PP.assets.image.add(s, img_blu, 5290, 3000, 0, 0);
+    let vetro3 = PP.assets.image.add(s, img_blu, 5250, 2950, 0, 0);
     PP.physics.add(s, vetro3, PP.physics.type.STATIC);
     PP.physics.add_overlap_f(s, player, vetro3, collision_vetro);
     PP.physics.set_collision_rectangle(vetro3, 40, 40, 14, 14);

@@ -12,6 +12,7 @@ let hurtable = false;
 move_disable = false;
 jump_disable = false;
 let invincibilità = false;
+let death_cause = null; // "lava", "enemy", ecc.
 
 let curr_anim = "stop"; //animazione corrente
 
@@ -27,8 +28,8 @@ function configure_player_animations(s) {
     // Configuro le animazioni secondo lo spritesheet
     PP.assets.sprite.animation_add(player, "walk", 10, 17, 12, -1);
     PP.assets.sprite.animation_add(player, "run", 20, 27, 12, -1);
-    PP.assets.sprite.animation_add(player, "jump_up", 30, 33, 5, 0);
-    PP.assets.sprite.animation_add(player, "jump_down", 34, 39, 5, 0);
+    PP.assets.sprite.animation_add(player, "jump_up", 32, 34, 5, 0);
+    PP.assets.sprite.animation_add(player, "jump_down", 35, 40, 5, 0);
     PP.assets.sprite.animation_add(player, "stop", 0, 9, 6, -1);
     PP.assets.sprite.animation_add(player, "hurt", 40, 44, 8, 0);
     PP.assets.sprite.animation_add(player, "die", 45, 49, 8, 0);
@@ -89,7 +90,6 @@ function update_player(s) {
     player.is_on_platform = false;
     player.is_on_floor = false; 
     player.is_on_casa = false;
-    player.is_on_lava = false;
     
     // Le animazioni del salto vengono gestite in base alla velocita' verticale
     if (PP.physics.get_velocity_y(player) > 0) {
@@ -187,26 +187,19 @@ function morte(s) {
     PP.physics.set_velocity_x(player, 0);
     PP.physics.set_velocity_y(player, 30);
     PP.assets.sprite.animation_stop(player);
+    curr_anim = "die";
     next_anim = "die";
-    console.log(next_anim);
-    PP.assets.sprite.animation_play(player, next_anim);
+    PP.assets.sprite.animation_play(player, "die");
     PP.timers.add_timer(s, 1000, game_over, false);
 }
 
 function game_over(s) {
-    if (player.is_on_lava){
+    if (death_cause === "lava") {
         PP.scenes.start("gameover1");
         return;
     }
-    /*
-    if (livello[0] == 2){
-        PP.scenes.start("morte2");
-        return;
-    }
-    if (livello[0] == 3){
-        PP.scenes.start("morte3");
-        return;
-    } */
+
+    // altre morti in futuro
 }
 
 
