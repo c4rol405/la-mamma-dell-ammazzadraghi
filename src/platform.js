@@ -55,7 +55,7 @@ function create_platform(s, player) {
     PP.physics.add_collider_f(s, player, platform1, collision_platform);
     PP.physics.set_collision_rectangle(platform1, 220, 50, 30, 30);
 
-    platform2 = PP.assets.image.add(s, img_platform3, 4100, 2880, 0, 0); //piattaforma mobile orizzontale
+    platform2 = PP.assets.image.add(s, img_platform3, 4100, 2890, 0, 0); //piattaforma mobile orizzontale
     PP.physics.add(s, platform2, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(platform2, true);
     PP.physics.set_allow_gravity(platform2, false);    
@@ -85,7 +85,7 @@ function create_platform(s, player) {
     PP.physics.add_collider_f(s, player, platform7, collision_platform);
     PP.physics.set_collision_rectangle(platform7, 220, 50, 30, 30);
 
-    platform8 = PP.assets.image.add(s, img_platform3, 3924, 2700, 0, 0);
+    platform8 = PP.assets.image.add(s, img_platform3, 3924, 2710, 0, 0);
     PP.physics.add(s, platform8, PP.physics.type.STATIC); 
     PP.physics.add_collider_f(s, player, platform8, collision_platform);
     PP.physics.set_collision_rectangle(platform8, 220, 50, 30, 30);
@@ -168,7 +168,7 @@ function create_platform(s, player) {
     PP.physics.add_collider_f(s, player, platform27, collision_platform);
     PP.physics.set_collision_rectangle(platform27, 220, 50, 20, 12);
     
-    platform29 = PP.assets.image.add(s, img_platform7, 5900, 4700, 0, 0);
+    platform29 = PP.assets.image.add(s, img_platform7, 5850, 4700, 0, 0);
     PP.physics.add(s, platform29, PP.physics.type.STATIC); 
     PP.physics.add_collider_f(s, player, platform29, collision_platform);
     PP.physics.set_collision_rectangle(platform29, 120, 50, 16, 16);
@@ -181,52 +181,116 @@ function create_platform(s, player) {
     PP.physics.add_collider_f(s, player, platform31, collision_platform);
     PP.physics.set_collision_rectangle(platform31, 120, 50, 16, 16);
     
-    
-    /*platform17 = PP.assets.image.add(s, img_platform1, 2620, 1270, 0, 0);
+    //DOVE C'ERA SFIDA 2
+    platform17 = PP.assets.image.add(s, img_platform7, 6370, 4450, 0, 0);
     PP.physics.add(s, platform17, PP.physics.type.STATIC);
     PP.physics.add_collider_f(s, player, platform17, collision_platform);
-    PP.physics.set_collision_rectangle(platform17, 220, 50, 20, 12); */
-    /*platform22 = PP.assets.image.add(s, img_platform3, 5450, 3650, 0, 0);
-    PP.physics.add(s, platform22, PP.physics.type.STATIC); 
-    PP.physics.add_collider_f(s, player, platform22, collision_platform);
-    PP.physics.set_collision_rectangle(platform22, 220, 50, 30, 30);*/
-    /*platform26 = PP.assets.image.add(s, img_platform5, 5470, 4150, 0, 0);
-    PP.physics.add(s, platform26, PP.physics.type.STATIC); 
+    PP.physics.set_collision_rectangle(platform17, 120, 50, 16, 16);
+    platform22 = PP.assets.image.add(s,  img_platform6, 6060, 4600, 0, 0); //FLIPPA
+    PP.physics.add(s, platform22, PP.physics.type.DYNAMIC); 
+    PP.physics.set_immovable(platform22, true);
+    PP.physics.set_allow_gravity(platform22, false); 
+    PP.physics.add_collider_f(s, player, platform22, collision_platform_flip);
+    PP.physics.set_collision_rectangle(platform22, 230, 70, 18, 14); 
+
+    //BASSO CENTRO
+    platform26 = PP.assets.image.add(s, img_platform7, 3600, 5350, 0, 0); //MOVIMENTO ORIZZONTALE
+    PP.physics.add(s, platform26, PP.physics.type.DYNAMIC); 
+    PP.physics.set_immovable(platform26, true);
+    PP.physics.set_allow_gravity(platform26, false);    
     PP.physics.add_collider_f(s, player, platform26, collision_platform);
-    PP.physics.set_collision_rectangle(platform26, 220, 50, 20, 12);*/
-    /*platform28 = PP.assets.image.add(s, img_platform5, 5610, 4850, 0, 0);
-    PP.physics.add(s, platform28, PP.physics.type.STATIC); 
-    PP.physics.add_collider_f(s, player, platform28, collision_platform);
-    PP.physics.set_collision_rectangle(platform28, 220, 50, 20, 12);*/
-    /*platform32 = PP.assets.image.add(s, img_platform5, 4620, 5480, 0, 0);
+    PP.physics.set_velocity_x(platform26, 100);
+    PP.physics.set_collision_rectangle(platform26, 120, 50, 16, 16);
+    platform28 = PP.assets.image.add(s, img_platform6, 3200, 5250, 0, 0); //FLIPPA
+    PP.physics.add(s, platform28, PP.physics.type.DYNAMIC); 
+    PP.physics.set_immovable(platform28, true);
+    PP.physics.set_allow_gravity(platform28, false); 
+    PP.physics.add_collider_f(s, player, platform28, collision_platform_flip);
+    PP.physics.set_collision_rectangle(platform28, 230, 70, 18, 14);
+    platform32 = PP.assets.image.add(s, img_platform7, 4300, 5200, 0, 0);
     PP.physics.add(s, platform32, PP.physics.type.STATIC); 
     PP.physics.add_collider_f(s, player, platform32, collision_platform);
-    PP.physics.set_collision_rectangle(platform32, 220, 50, 20, 12);*/
+    PP.physics.set_collision_rectangle(platform32, 120, 50, 16, 16);
 
+    platform33 = PP.assets.image.add(s, img_platform6, 2890, 4770, 0, 0); //FLIPPA
+    PP.physics.add(s, platform33, PP.physics.type.DYNAMIC); 
+    PP.physics.set_immovable(platform33, true);
+    PP.physics.set_allow_gravity(platform33, false); 
+    PP.physics.add_collider_f(s, player, platform33, collision_platform_flip);
+    PP.physics.set_collision_rectangle(platform33, 230, 70, 18, 14);
+    platform34 = PP.assets.image.add(s, img_platform7, 3400, 4588, 0, 0); //MOVIMENTO ORIZZONTALE
+    PP.physics.add(s, platform34, PP.physics.type.DYNAMIC); 
+    PP.physics.set_immovable(platform34, true);
+    PP.physics.set_allow_gravity(platform34, false);    
+    PP.physics.add_collider_f(s, player, platform34, collision_platform);
+    PP.physics.set_velocity_x(platform34, 100);
+    PP.physics.set_collision_rectangle(platform34, 120, 50, 16, 16);
+
+    platform35 = PP.assets.image.add(s, img_platform10, 6800, 400, 0, 0); //piattaforma mobile verticale
+    PP.physics.add(s, platform35, PP.physics.type.DYNAMIC); 
+    PP.physics.set_immovable(platform35, true);
+    PP.physics.set_allow_gravity(platform35, false);    
+    PP.physics.add_collider_f(s, player, platform35, collision_platform);
+    PP.physics.set_velocity_y(platform35, 100);
+    PP.physics.set_collision_rectangle(platform35, 120, 50, 16, 16);
+    platform36 = PP.assets.image.add(s, img_platform10, 6630, 1240, 0, 0); 
+    PP.physics.add(s, platform36, PP.physics.type.STATIC);
+    PP.physics.add_collider_f(s, player, platform36, collision_platform);
+    PP.physics.set_collision_rectangle(platform36, 120, 30, 16, 16);
+    platform37 = PP.assets.image.add(s, img_platform8, 7100, 300, 0, 0);
+    PP.physics.add(s, platform37, PP.physics.type.STATIC);
+    PP.physics.add_collider_f(s, player, platform37, collision_platform);
+    PP.physics.set_collision_rectangle(platform37, 220, 50, 20, 24);
+    platform38 = PP.assets.image.add(s, img_platform9, 5600, 290, 0, 0); //flippa
+    PP.physics.add(s, platform38, PP.physics.type.DYNAMIC); 
+    PP.physics.set_immovable(platform38, true);
+    PP.physics.set_allow_gravity(platform38, false); 
+    PP.physics.add_collider_f(s, player, platform38, collision_platform_flip);
+    PP.physics.set_collision_rectangle(platform38, 230, 70, 14, 26);
+    platform39 = PP.assets.image.add(s, img_platform10, 5450, 560, 0, 0);
+    PP.physics.add(s, platform39, PP.physics.type.STATIC);
+    PP.physics.add_collider_f(s, player, platform39, collision_platform);
+    PP.physics.set_collision_rectangle(platform39, 120, 50, 16, 16);
+    platform40 = PP.assets.image.add(s, img_platform8, 5200, 410, 0, 0);
+    PP.physics.add(s, platform40, PP.physics.type.STATIC);
+    PP.physics.add_collider_f(s, player, platform40, collision_platform);
+    PP.physics.set_collision_rectangle(platform40, 220, 50, 20, 24);
+    platform41 = PP.assets.image.add(s, img_platform10, 6800, 1450, 0, 0); 
+    PP.physics.add(s, platform41, PP.physics.type.STATIC);
+    PP.physics.add_collider_f(s, player, platform41, collision_platform);
+    PP.physics.set_collision_rectangle(platform41, 120, 30, 16, 16);
+    platform42 = PP.assets.image.add(s, img_platform10, 6630, 1660, 0, 0); 
+    PP.physics.add(s, platform42, PP.physics.type.STATIC);
+    PP.physics.add_collider_f(s, player, platform42, collision_platform);
+    PP.physics.set_collision_rectangle(platform42, 120, 30, 16, 16);
+    platform43 = PP.assets.image.add(s, img_platform8, 6530, 1950, 0, 0);
+    PP.physics.add(s, platform43, PP.physics.type.STATIC);
+    PP.physics.add_collider_f(s, player, platform43, collision_platform);
+    PP.physics.set_collision_rectangle(platform43, 220, 50, 20, 24);
+    platform44 = PP.assets.image.add(s, img_platform9, 6890, 2050, 0, 0); //flippa
+    PP.physics.add(s, platform44, PP.physics.type.DYNAMIC); 
+    PP.physics.set_immovable(platform44, true);
+    PP.physics.set_allow_gravity(platform44, false); 
+    PP.physics.add_collider_f(s, player, platform44, collision_platform_flip);
+    PP.physics.set_collision_rectangle(platform44, 230, 70, 14, 26);
 }
 
 function update_platform(s) {
     // MOVIMENTO ORIZZONTALE
-    if(platform2.geometry.x >= 4100) {      //limite destro
-        PP.physics.set_velocity_x(platform2, -100);
-    }
-    else if(platform2.geometry.x <= 3600) {     //limite sinistro
-        PP.physics.set_velocity_x(platform2, 100);
-    }
+    if(platform2.geometry.x >= 4100) {PP.physics.set_velocity_x(platform2, -100);} //dx
+    else if(platform2.geometry.x <= 3600) {PP.physics.set_velocity_x(platform2, 100);} //sx
+
+    if(platform26.geometry.x >= 4400) {PP.physics.set_velocity_x(platform26, -100);} //dx
+    else if(platform26.geometry.x <= 3550) {PP.physics.set_velocity_x(platform26, 100);} //sx
+
+    if(platform34.geometry.x >= 3400) {PP.physics.set_velocity_x(platform34, -100);} //dx
+    else if(platform34.geometry.x <= 2380) {PP.physics.set_velocity_x(platform34, 100);} //sx
 
     // MOVIMENTO VERTICALE
-    if(platform24.geometry.y >= 4100) {      //limite basso
-        PP.physics.set_velocity_y(platform24, -100);
-    }
-    else if(platform24.geometry.y <= 3800) {     //limite alto
-        PP.physics.set_velocity_y(platform24, 100);
-    }
-    if(platform25.geometry.y >= 4500) {      //limite basso
-        PP.physics.set_velocity_y(platform25, -100);
-    }
-    else if(platform25.geometry.y <= 4200) {     //limite alto
-        PP.physics.set_velocity_y(platform25, 100);
-    }
-
-
+    if(platform24.geometry.y >= 4100) {PP.physics.set_velocity_y(platform24, -100);} //giu
+    else if(platform24.geometry.y <= 3800) {PP.physics.set_velocity_y(platform24, 100);} //su
+    if(platform25.geometry.y >= 4500) {PP.physics.set_velocity_y(platform25, -100);} //giu
+    else if(platform25.geometry.y <= 4200) {PP.physics.set_velocity_y(platform25, 100);} //su
+    if(platform35.geometry.y >= 1100) {PP.physics.set_velocity_y(platform35, -100);} //giu
+    else if(platform35.geometry.y <= 350) {PP.physics.set_velocity_y(platform35, 100);} //su
 }

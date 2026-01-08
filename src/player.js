@@ -41,6 +41,17 @@ function preload_player(s) {
     sprite_player = PP.assets.sprite.load_spritesheet(s, "assets/images/player.png", 196, 196);
 }
 
+function reset_player_state(s) {
+    is_dead = false;
+    hurtable = false;
+    invincibilità = false;
+    move_disable = false;
+    jump_disable = false;
+
+    curr_anim = "stop";
+    next_anim = "stop";
+}
+
 function create_player(s) {
     player = PP.assets.sprite.add(s, sprite_player, player_x, player_y, 0.5, 1);
     PP.physics.add(s, player, PP.physics.type.DYNAMIC);
@@ -49,6 +60,8 @@ function create_player(s) {
     //disattivo il blocco del movimento creato dalla morte  
     PP.camera.start_follow(s, player, -235, 230);
     move_disable = false;
+
+    reset_player_state(s);
 }
 
 function update_player(s) {
@@ -198,8 +211,10 @@ function game_over(s) {
         PP.scenes.start("gameover1");
         return;
     }
-
-    // altre morti in futuro
+    if (death_cause === "fantasma") {
+        PP.scenes.start("gameover2");
+        return;
+    }
 }
 
 

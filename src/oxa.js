@@ -104,13 +104,13 @@ function create_casa(s, player) {
     mappa24 = PP.shapes.rectangle_add(s, 904, 2030, 300, 1, "0x000000", 0);
     PP.physics.add(s, mappa24, PP.physics.type.STATIC); 
     PP.physics.add_collider_f(s, player, mappa24, collision_casa);
-    mappa25 = PP.shapes.rectangle_add(s, 6576, 1194, 210, 1, "0x000000", 0);
+    mappa25 = PP.shapes.rectangle_add(s, 6550, 1194, 210, 1, "0x000000", 0);
     PP.physics.add(s, mappa25, PP.physics.type.STATIC); 
     PP.physics.add_collider_f(s, player, mappa25, collision_casa);
-    mappa26 = PP.shapes.rectangle_add(s, 6580, 1622, 210, 1, "0x000000", 0);
+    mappa26 = PP.shapes.rectangle_add(s, 6550, 1622, 210, 1, "0x000000", 0);
     PP.physics.add(s, mappa26, PP.physics.type.STATIC); 
     PP.physics.add_collider_f(s, player, mappa26, collision_casa);
-    mappa27 = PP.shapes.rectangle_add(s, 7030, 1412, 250, 1, "0x000000", 0);
+    mappa27 = PP.shapes.rectangle_add(s, 7054, 1412, 250, 1, "0x000000", 0);
     PP.physics.add(s, mappa27, PP.physics.type.STATIC); 
     PP.physics.add_collider_f(s, player, mappa27, collision_casa);
     mappa28 = PP.shapes.rectangle_add(s, 6994, 1824, 200, 1, "0x000000", 0);
@@ -131,14 +131,11 @@ function create_casa(s, player) {
     mappa33 = PP.shapes.rectangle_add(s, 3492, 4960, 250, 1, "0x000000", 0);
     PP.physics.add(s, mappa33, PP.physics.type.STATIC); 
     PP.physics.add_collider_f(s, player, mappa33, collision_casa);
-
     mappa34 = PP.shapes.rectangle_add(s, 5130, 4614, 250, 1, "0x000000", 0);
     PP.physics.add(s, mappa34, PP.physics.type.STATIC); 
     PP.physics.add_collider_f(s, player, mappa34, collision_casa);
     mappa35 = PP.shapes.rectangle_add(s, 5094, 3764, 250, 1, "0x000000", 0);
     PP.physics.add(s, mappa35, PP.physics.type.STATIC); 
     PP.physics.add_collider_f(s, player, mappa35, collision_casa);
-
-    //ne mancano 8, 4 su di pietra, 4 giu nella grotta
 }
 

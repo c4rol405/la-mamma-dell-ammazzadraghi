@@ -9,11 +9,12 @@ function preload_vetro(s) {
 }
 
 function collision_vetro(s, player, vetro) {
-    // In caso di collisione distruggo il funghetto
-    PP.assets.destroy(vetro);
-    // Poi aumento di 1 lo score
-    //dlet prev_score = PP.gameState.get_variable("score");
-    //PP.gameState.set_variable("score", prev_score+1);
+    PP.assets.destroy(vetro); // con la collisione sparisce il vetro
+    let curr = PP.game_state.get_variable("consapevolezza"); // leggo lo score
+    curr++; //aumento score
+    if (curr > 20) curr = 20; //per sicurezza metto limite a 20
+    PP.game_state.set_variable("consapevolezza", curr); //salvo nuovo valore
+    update_hud_consapevolezza(s); //aggiorno HUD
 }
 
 function create_vetro(s, player) {
@@ -52,6 +53,45 @@ function create_vetro(s, player) {
     PP.physics.add_overlap_f(s, player, vetro7, collision_vetro);
     PP.physics.set_collision_rectangle(vetro7, 40, 40, 14, 14);
 
+    let vetro8 = PP.assets.image.add(s, img_rosa, 5050, 4520, 0, 0);
+    PP.physics.add(s, vetro8, PP.physics.type.STATIC);
+    PP.physics.add_overlap_f(s, player, vetro8, collision_vetro);
+    PP.physics.set_collision_rectangle(vetro8, 40, 40, 14, 14);
+
+    let vetro9 = PP.assets.image.add(s, img_blu, 6408, 4390, 0, 0);
+    PP.physics.add(s, vetro9, PP.physics.type.STATIC);
+    PP.physics.add_overlap_f(s, player, vetro9, collision_vetro);
+    PP.physics.set_collision_rectangle(vetro9, 40, 40, 14, 14);
+
+    let vetro10 = PP.assets.image.add(s, img_verde, 3300, 5170, 0, 0);
+    PP.physics.add(s, vetro10, PP.physics.type.STATIC);
+    PP.physics.add_overlap_f(s, player, vetro10, collision_vetro);
+    PP.physics.set_collision_rectangle(vetro10, 40, 40, 14, 14);
+
+    let vetro11 = PP.assets.image.add(s, img_rosa, 2470, 4510, 0, 0);
+    PP.physics.add(s, vetro11, PP.physics.type.STATIC);
+    PP.physics.add_overlap_f(s, player, vetro11, collision_vetro);
+    PP.physics.set_collision_rectangle(vetro11, 40, 40, 14, 14);
+
+    let vetro12 = PP.assets.image.add(s, img_blu, 2350, 980, 0, 0);
+    PP.physics.add(s, vetro12, PP.physics.type.STATIC);
+    PP.physics.add_overlap_f(s, player, vetro12, collision_vetro);
+    PP.physics.set_collision_rectangle(vetro12, 40, 40, 14, 14);
+
+    let vetro13 = PP.assets.image.add(s, img_verde, 3448, 1340, 0, 0);
+    PP.physics.add(s, vetro13, PP.physics.type.STATIC);
+    PP.physics.add_overlap_f(s, player, vetro13, collision_vetro);
+    PP.physics.set_collision_rectangle(vetro13, 40, 40, 14, 14);
+
+    let vetro14 = PP.assets.image.add(s, img_rosa, 5170, 160, 0, 0);
+    PP.physics.add(s, vetro14, PP.physics.type.STATIC);
+    PP.physics.add_overlap_f(s, player, vetro14, collision_vetro);
+    PP.physics.set_collision_rectangle(vetro14, 40, 40, 14, 14);
+
+    let vetro15 = PP.assets.image.add(s, img_verde, 7500, 160, 0, 0);
+    PP.physics.add(s, vetro15, PP.physics.type.STATIC);
+    PP.physics.add_overlap_f(s, player, vetro15, collision_vetro);
+    PP.physics.set_collision_rectangle(vetro15, 40, 40, 14, 14);
 }
 
 function update_vetro(s) {

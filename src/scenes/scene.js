@@ -18,7 +18,7 @@ function preload(s) {
     preload_dialogo (s);
     preload_enemy(s);
     preload_vetro(s);
-    //preload_hud (s);
+    preload_hud (s);
 }
 
 function create(s) {
@@ -40,7 +40,7 @@ function create(s) {
     configure_player_animations(s);
     create_vetro(s, player);
     create_casa(s, player);
-    //create_hud (s);
+    create_hud (s);
 
     // Creo una variabile per lo "score" della scena
     /*PP.gameState.set_variable("score", 0);
@@ -57,6 +57,10 @@ function create(s) {
 
 
 function update(s) {
+    if (PP.interactive.kb.is_key_down(s, PP.key_codes.P)) { 
+    console.log("Player position:", player.geometry.x, player.geometry.y);
+    } //per capire dove posizionare cose
+    
     /*
     //camera fissa all'inizio 
     if(player.geometry.x < 2680) {

@@ -7,10 +7,16 @@
     <script src="lib/phaser.min.js"></script>
     <script src="lib/poliphaser.js"></script>
 
+    <script src="src/scenes/home.js" type="module"></script>
+
+    <script src="src/scenes/storia.js" type="module"></script>
+    <script src="src/scenes/crediti.js" type="module"></script>
+
     <script src="src/scenes/scene.js" type="module"></script>
     <script src="src/scenes/sfida1.js" type="module"></script>
     <script src="src/scenes/sfida2.js" type="module"></script>
     <script src="src/scenes/gameover1.js" type="module"></script>
+
 
     <script src="src/hud.js"></script>
     <script src="src/player.js"></script>
@@ -29,8 +35,24 @@
 </head>
 
 <body
-    style= "background-color:black;">
-    <div id="game_area" style="text-align:center;"> </div>
+    <div id="game_area"</div>
+    <style>
+    html, body {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+    }
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-image: url('assets/situe/texture.png');
+        background-repeat: repeat;
+    }
+    #game_area canvas {
+        display: block;
+    }
+    </style>
 </body>
 
 </html>
