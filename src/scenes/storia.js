@@ -106,6 +106,7 @@ function tavola_prima(s) {
 }
 
 function create(s) {
+	numero_tavola = 0
 	tavola_attiva = null;
 	seleziona_tavole(s);
 }
