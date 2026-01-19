@@ -61,6 +61,8 @@ function seleziona_tavole(s) {
 		pulsante_avanti.geometry.scale_x = 0.15;
 		pulsante_avanti.geometry.scale_y = 0.15;
 
+		PP.interactive.mouse.add(pulsante_gotohome, "pointerdown", () => PP.scenes.start("home"));
+
 		// Aggiungi pulsante indietro solo se NON siamo alla prima tavola
 		if (numero_tavola > 0) {
 			pulsante_indietro = PP.assets.image.add(s, p_indietro, 70, 370, 0.5, 0.5);
