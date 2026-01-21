@@ -88,10 +88,35 @@ function create_vetro(s, player) {
     PP.physics.add_overlap_f(s, player, vetro14, collision_vetro);
     PP.physics.set_collision_rectangle(vetro14, 40, 40, 14, 14);
 
-    let vetro15 = PP.assets.image.add(s, img_verde, 7500, 160, 0, 0);
+    let vetro15 = PP.assets.image.add(s, img_blu, 7500, 160, 0, 0);
     PP.physics.add(s, vetro15, PP.physics.type.STATIC);
     PP.physics.add_overlap_f(s, player, vetro15, collision_vetro);
     PP.physics.set_collision_rectangle(vetro15, 40, 40, 14, 14);
+
+    let vetro16 = PP.assets.image.add(s, img_verde, 5900, 1460, 0, 0);
+    PP.physics.add(s, vetro16, PP.physics.type.STATIC);
+    PP.physics.add_overlap_f(s, player, vetro16, collision_vetro);
+    PP.physics.set_collision_rectangle(vetro16, 40, 40, 14, 14);
+
+    let vetro17 = PP.assets.image.add(s, img_rosa, 900, 1930, 0, 0);
+    PP.physics.add(s, vetro17, PP.physics.type.STATIC);
+    PP.physics.add_overlap_f(s, player, vetro17, collision_vetro);
+    PP.physics.set_collision_rectangle(vetro17, 40, 40, 14, 14);
+
+    let vetro18 = PP.assets.image.add(s, img_blu, 180, 2370, 0, 0);
+    PP.physics.add(s, vetro18, PP.physics.type.STATIC);
+    PP.physics.add_overlap_f(s, player, vetro18, collision_vetro);
+    PP.physics.set_collision_rectangle(vetro18, 40, 40, 14, 14);
+
+    let vetro19 = PP.assets.image.add(s, img_verde, 7000, 1740, 0, 0);
+    PP.physics.add(s, vetro19, PP.physics.type.STATIC);
+    PP.physics.add_overlap_f(s, player, vetro19, collision_vetro);
+    PP.physics.set_collision_rectangle(vetro19, 40, 40, 14, 14);
+
+    let vetro20 = PP.assets.image.add(s, img_rosa, 260, 5960, 0, 0);
+    PP.physics.add(s, vetro20, PP.physics.type.STATIC);
+    PP.physics.add_overlap_f(s, player, vetro20, collision_vetro);
+    PP.physics.set_collision_rectangle(vetro20, 40, 40, 14, 14);
 }
 
 function update_vetro(s) {

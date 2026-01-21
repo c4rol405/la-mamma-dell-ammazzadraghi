@@ -50,7 +50,7 @@ function create_casa(s, player) {
     mappa6 = PP.shapes.rectangle_add(s, 1830, 2372, 200, 1, "0x000000", 0);
     PP.physics.add(s, mappa6, PP.physics.type.STATIC); 
     PP.physics.add_collider_f(s, player, mappa6, collision_casa);
-    mappa7 = PP.shapes.rectangle_add(s, 2728, 1288, 250, 1, "0x000000", 0);
+    mappa7 = PP.shapes.rectangle_add(s, 2728, 1272, 250, 1, "0x000000", 0);
     PP.physics.add(s, mappa7, PP.physics.type.STATIC); 
     PP.physics.add_collider_f(s, player, mappa7, collision_casa);
     mappa8 = PP.shapes.rectangle_add(s, 2440, 508, 200, 1, "0x000000", 0);

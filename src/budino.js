@@ -16,7 +16,7 @@ function collision_budino(s, player, budino) {
   
    if(PP.interactive.kb.is_key_down(s, PP.key_codes.SPACE)) {
        if(player.is_on_budino) {
-           PP.physics.set_velocity_y(player, -2 * player_jump);
+           PP.physics.set_velocity_y(player, -1.5 * player_jump);
        }
    }
 }

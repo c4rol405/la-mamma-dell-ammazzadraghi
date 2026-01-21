@@ -4,8 +4,7 @@ function collision_lava(s, player, lava) {
     if (is_dead) return;
 
     is_dead = true;
-    death_cause = "lava";
-    morte(s);
+    morte(s, "lava");
 }
 
 function create_lava(s, player) {

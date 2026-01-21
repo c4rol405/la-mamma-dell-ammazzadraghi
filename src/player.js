@@ -4,25 +4,18 @@ let player;
 let player_x = 2600; //dove spawna
 let player_y = 3190;
 let player_speed = 300;
-
 let player_jump = 550;
 
-let hurtable = false;
-
-move_disable = false;
-jump_disable = false;
-let invincibilità = false;
-let death_cause = null; // "lava", "enemy", ecc.
+let player_immunity = false;   // immunità temporanea dopo danno
+let health = 3;                // vite del player
+let move_disable = false;
+let jump_disable = false;
+let death_cause = null; // "lava" "fantasma"
 
 let curr_anim = "stop"; //animazione corrente
 
 let next_anim;
 next_anim = curr_anim;
-
-let img_cuore;
-let cuori = [];
-let vite_rimanenti = 4;
-PP.game_state.set_variable("Vite", 5);
 
 function configure_player_animations(s) {
     // Configuro le animazioni secondo lo spritesheet
@@ -43,10 +36,9 @@ function preload_player(s) {
 
 function reset_player_state(s) {
     is_dead = false;
-    hurtable = false;
-    invincibilità = false;
     move_disable = false;
     jump_disable = false;
+    player_immunity = false;
 
     curr_anim = "stop";
     next_anim = "stop";
@@ -87,7 +79,11 @@ function update_player(s) {
             PP.physics.set_velocity_x(player, 0);
             next_anim = "stop";
         }
+    }    
+    else {
+       PP.physics.set_velocity_x(player, 0);
     }
+
 
     // CREA BUDINO
     if(PP.interactive.kb.is_key_down(s, PP.key_codes.B)) {
@@ -105,16 +101,8 @@ function update_player(s) {
     player.is_on_casa = false;
     
     // Le animazioni del salto vengono gestite in base alla velocita' verticale
-    if (PP.physics.get_velocity_y(player) > 0) {
-        if (hurtable == false) {
-            next_anim = "jump_down";
-        }
-    }
-    else if (PP.physics.get_velocity_y(player) < 0) {
-        if (hurtable == false) {
-            next_anim = "jump_up";
-        }
-    }
+    if (PP.physics.get_velocity_y(player) > 0 && !player_immunity) next_anim = "jump_down";
+    else if (PP.physics.get_velocity_y(player) < 0 && !player_immunity) next_anim = "jump_up";
 
     // Ora verifico l'animazione scelta:
     // - se e' uguale a quella attuale, non faccio niente
@@ -143,103 +131,25 @@ function salto (s, obj1, obj2) {
     }
 }
 
-function preload_vite(s) {
-    PP.game_state.set_variable("Vite", 5);
-    vite_rimanenti = 4;
-    cuori = [];
-    img_cuore = PP.assets.image.load(s, "assets/icone/home_icona.png", 150, 156);
-}
+let morto = false;
+function morte(s, tipo) {
+    if (morto) return;
+    morto = true;
 
-function create_vite(s) {
-    for (let i = 0; i < PP.game_state.get_variable("Vite"); i++) {
-        let cuore = PP.assets.image.add(s, img_cuore, 50 + i * 50, 20, 0, 0);
-        cuore.tile_geometry.scroll_factor_x = 0;
-        cuore.tile_geometry.scroll_factor_y = 0;
-        cuori.push(cuore);
-    }
-}
-
-function update_vite(s) {
-
-    let cam_x = PP.camera.get_scroll_x(s);
-    let cam_y = PP.camera.get_scroll_y(s);
-
-    for (let i = 0; i < cuori.length; i++) {
-        cuori[i].geometry.x = cam_x + 30 + i * 50;
-        cuori[i].geometry.y = cam_y + 20;
-    }
-}
-
-function vita_persa(s) {
-    if (invincibilità) return;  // 👈 BLOCCO DANNI MULTIPLI
-
-    PP.assets.destroy(cuori[vite_rimanenti]);
-    vite_rimanenti--;
-
-    let prev_score = PP.game_state.get_variable("Vite");
-    PP.game_state.set_variable("Vite", prev_score - 1);
-
-    danno(s);
-
-    if (PP.game_state.get_variable("Vite") <= 0) {
-        PP.assets.destroy(cuori[0]);
-        morte(s);
-    }
-}
-
-function collisione_nemico(s, player, enemy) {
-    if (!invincibilità) {
-        vita_persa(s);
-    }
-}
-
-function morte(s) {
+    death_cause = tipo;
     move_disable = true;
     jump_disable = true;
-    hurtable = true;
+    player_immunity = true;
     PP.physics.set_velocity_x(player, 0);
-    PP.physics.set_velocity_y(player, 30);
+    PP.physics.set_velocity_y(player, -30);
     PP.assets.sprite.animation_stop(player);
     curr_anim = "die";
     next_anim = "die";
     PP.assets.sprite.animation_play(player, "die");
-    PP.timers.add_timer(s, 1000, game_over, false);
+    PP.timers.add_timer(s, 1000, () => {game_over(s); }, false);
 }
 
 function game_over(s) {
-    if (death_cause === "lava") {
-        PP.scenes.start("gameover1");
-        return;
-    }
-    if (death_cause === "fantasma") {
-        PP.scenes.start("gameover2");
-        return;
-    }
-}
-
-
-function danno(s) {
-    hurtable = true;
-    invincibilità = true;
-    next_anim = "hurt";
-    move_disable = true;
-    jump_disable = true;
-    PP.physics.set_velocity_x(player, -200);
-    PP.physics.set_velocity_y(player, -300);
-    PP.assets.sprite.animation_stop(player);
-    PP.timers.add_timer(s,1000, fine_danno, false);
-    let prev_score = PP.game_state.get_variable("Vetri");
-        if (prev_score > 0)
-        {
-            PP.game_state.set_variable("Vetri", prev_score-1);
-        }
-    
-}
-
-function fine_danno(s) {
-    hurtable = false;
-    invincibilità = false;
-    move_disable = false;
-    jump_disable = false;
-    next_anim = "stop";
+    if (death_cause === "lava") PP.scenes.start("gameover1");
+    else if (death_cause === "fantasma") PP.scenes.start("gameover2");
 }
