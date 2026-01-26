@@ -1,9 +1,12 @@
 let img_map;
 let map;
+let img_porta;
+let porta;
 
 function preload(s) {
     //assets grafici
-    img_map = PP.assets.image.load(s, "assets/images/mappacorretta.png");
+    img_map = PP.assets.image.load(s, "assets/images/mapdef.png");
+    img_porta = PP.assets.image.load(s, "assets/images/porta.png");
 
     //elementi js
     preload_player(s);
@@ -19,11 +22,15 @@ function preload(s) {
 function create(s) {
     create_player(s);
     map = PP.assets.image.add(s, img_map, 0, 0, 0, 0);
+    porta = PP.assets.image.add(s, img_porta, 9474, 2786, 0, 0);
 
     // codice per creare un layer sopra tutti per il player
     let layer_player = PP.layers.create(s);
     PP.layers.add_to_layer(layer_player, player);
     PP.layers.set_z_index(layer_player, 10);
+    let layer_porta = PP.layers.create(s);
+    PP.layers.add_to_layer(layer_porta, porta);
+    PP.layers.set_z_index(layer_porta, 50);
 
     create_floor(s, player);
     create_platform(s, player);
@@ -46,9 +53,6 @@ function update(s) {
         PP.camera.set_follow_offset(s, player.geometry.x-2680, 225);
     } */
 
-    if (PP.interactive.kb.is_key_down(s, PP.key_codes.P)) { 
-    console.log("Player position:", player.geometry.x, player.geometry.y);
-    } //per capire dove posizionare cose
 
     update_player(s);
     update_hud_consapevolezza(s);

@@ -57,6 +57,10 @@ function create_player(s) {
 }
 
 function update_player(s) {
+    if (PP.interactive.kb.is_key_down(s, PP.key_codes.P)) { 
+        console.log("Player position:", player.geometry.x, player.geometry.y);
+    } //per capire dove posizionare cose
+
     // MOVIMENTO
     if (move_disable == false) {
         if (PP.interactive.kb.is_key_down(s, PP.key_codes.RIGHT)) {

@@ -11,25 +11,25 @@ let meg_c_premuta = false;  // C premuto solo una volta
 let meg_p_bloccato = false; // P bloccato dopo che C è stato premuto
 
 function preload_meg (s){
-   img_meg = PP.assets.sprite.load_spritesheet(s, "assets/meg/spritesheet.png", 420, 420);
+   img_meg = PP.assets.sprite.load_spritesheet(s, "assets/meg/meg.png", 420, 420);
 }
 
 function create_meg (s) {
-    meg = PP.assets.sprite.add(s, img_meg, 2730, 3190, 0, 1);
+    meg = PP.assets.sprite.add(s, img_meg, 2800, 3190, 0, 1);
     PP.physics.add(s, meg, PP.physics.type.STATIC);
-    //PP.physics.add_collider (s, meg, floor14);
 
     PP.assets.sprite.animation_add(meg, "base", 0, 6, 4, -1);    //meg gira gli occhi
-    PP.assets.sprite.animation_add(meg, "padella", 9, 15, 6, 0); //meg fa il gesto della padella
-    PP.assets.sprite.animation_add(meg, "sparisce", 18, 26, 10, 0); 
-    PP.assets.sprite.animation_add(meg, "vuoto", 7, 8, 6, 0);
+    PP.assets.sprite.animation_add(meg, "padella", 7, 13, 6, 0); //meg fa il gesto della padella
+    PP.assets.sprite.animation_add(meg, "parla", 23, 33, 4, -1);
+    PP.assets.sprite.animation_add(meg, "sparisce", 14, 22, 10, 0); 
+    PP.assets.sprite.animation_add(meg, "vuoto", 34, 35, 6, 0);
 
     PP.assets.sprite.animation_play(meg, "base");
 }
 
 function finepadella(s) {
-  curr_meg = "base";
-  PP.assets.sprite.animation_play(meg, "base");
+  curr_meg = "parla";
+  PP.assets.sprite.animation_play(meg, "parla");
 }
 function finedialogo(s) {
   curr_meg = "vuoto";

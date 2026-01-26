@@ -1,21 +1,19 @@
 let img_sfida1;
 let sfondo;
 let muro1, muro2, muro3, muro4;
-let img_drago;
-let drago;
 let img_platsfida;
 let platsfida;
 
 function preload(s) {
     //assets grafici
     img_sfida1 = PP.assets.image.load(s, "assets/images/sfida-03.png");
-    img_drago = PP.assets.sprite.load_spritesheet(s, "assets/images/drago.png", 480, 400);
 
     img_platsfida = PP.assets.image.load(s, "assets/platform/grotta1.png");
 
     //elementi js
     preload_player(s);
     preload_budino(s);
+    preload_drago(s);
 }
 
 function collision_muro(s, player, muro) {
@@ -31,6 +29,8 @@ function collision_platsfida(s, player, platsfida) {
 }
 function create(s) {
     create_player(s);
+    player.geometry.scale_x = 0.85;
+    player.geometry.scale_y = 0.85;
     configure_player_animations(s);
     muro1 = PP.shapes.rectangle_add(s, 2600, 2634, 2000, 1, "0x000000", 0)
     PP.physics.add(s, muro1, PP.physics.type.STATIC);
@@ -52,10 +52,7 @@ function create(s) {
     PP.physics.add_collider_f(s, player, platsfida, collision_platsfida);
     PP.physics.set_collision_rectangle(platsfida, 220, 50, 20, 12);
 
-    drago = PP.assets.sprite.add(s, img_drago, 3050, 2950, 0, 0);
-    PP.physics.add(s, drago, PP.physics.type.STATIC);
-    PP.assets.sprite.animation_add(drago, "drago", 0, 12, 4, -1);
-    PP.assets.sprite.animation_play(drago, "drago");
+    create_drago(s);
 
     // codice per creare un layer sopra tutti per il player
     let layer_player = PP.layers.create(s);
@@ -72,6 +69,7 @@ function create(s) {
 function update(s) {
     update_player(s);
     update_budino(s, player);
+    update_drago(s);
 }
 
 function destroy(s) {
