@@ -5,7 +5,7 @@ let porta;
 
 function preload(s) {
     //assets grafici
-    img_map = PP.assets.image.load(s, "assets/images/mapdef.png");
+    img_map = PP.assets.image.load(s, "assets/images/mappaf.png");
     img_porta = PP.assets.image.load(s, "assets/images/porta.png");
 
     //elementi js
@@ -21,6 +21,13 @@ function preload(s) {
 
 function create(s) {
     create_player(s);
+    morto = false;
+    is_dead = false;
+
+    move_disable = false;
+    jump_disable = false;
+    player_immunity = false;
+    
     map = PP.assets.image.add(s, img_map, 0, 0, 0, 0);
     porta = PP.assets.image.add(s, img_porta, 9474, 2786, 0, 0);
 
@@ -49,14 +56,17 @@ function create(s) {
 
 
 function update(s) {
-    /*if(player.geometry.x < 2680 && player.geometry.x > 662) {
-        PP.camera.set_follow_offset(s, player.geometry.x-2680, 225);
-    } */
-
+    if (PP.interactive.kb.is_key_down(s, PP.key_codes.H)) {
+        let consapevolezza_val = PP.game_state.get_variable("consapevolezza");
+        let budini_val = PP.game_state.get_variable("budini");
+        console.log("CHECK HUD: consapevolezza =", consapevolezza_val, ", budini =", budini_val);
+    }
 
     update_player(s);
-    update_hud_consapevolezza(s);
-    update_hud_cuori(s);
+    update_hud(s);
+    //update_hud_consapevolezza(s);
+    //update_hud_cuori(s);
+    //update_hud_budini(s);
 
     update_platform(s, player);
     update_budino(s, player);

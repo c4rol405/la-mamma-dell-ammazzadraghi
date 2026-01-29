@@ -2,9 +2,6 @@ let img_budino;
 let budino;
 let can_create_budino = true;
 
-
-
-
 function preload_budino(s) {
    img_budino = PP.assets.image.load(s, "assets/images/budino.png");
 }
@@ -23,6 +20,10 @@ function collision_budino(s, player, budino) {
 
 
 function create_budino(s) {
+   let curr_budini = PP.game_state.get_variable("budini"); 
+   if (!can_create_budino || curr_budini <= 0) return;
+   if (!player.is_on_floor && !player.is_on_platform && !player.is_on_casa) return; // non va se player in aria
+
    budino = PP.assets.image.add(s, img_budino, player.geometry.x+10, player.geometry.y-100, 0, 0);
    budino.geometry.scale_x = 0.3;
    budino.geometry.scale_y = 0.3;
@@ -30,12 +31,14 @@ function create_budino(s) {
    PP.physics.add_collider_f(s, player, budino, collision_budino);
    PP.physics.set_collision_rectangle(budino, 10, 40, 40, 30);
 
+   PP.game_state.set_variable("budini", curr_budini - 1);
 
-   if(can_create_budino === false) return; // se non posso creare, esci
-   can_create_budino = false;     // blocco nuovo budino
-   PP.timers.add_timer(s, 120, enable_budino_creation, false); // dopo 2 sec riattivo
+   // Blocca la creazione temporaneamente
+   can_create_budino = false;
+   PP.timers.add_timer(s, 1000, () => {can_create_budino = true}, false);
+   //PP.timers.add_timer(s, 100, enable_budino_creation, false);
+   //PP.timers.add_timer(s, 500, () => {enable_budino_creation = false}, false);
 }
-
 
 function enable_budino_creation(s) { // Funzione che viene chiamata allo scadere del timer
    can_create_budino = true; //ora posso creare budino

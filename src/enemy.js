@@ -21,7 +21,7 @@ function danno_player(s, fantasma, player) {
     
     // Se l’ultima vita è stata persa, chiama morte(s)
     if (vite - 1 <= 0) {
-        morte(s, "fantasma");
+        morte(s);
     } else {
         next_anim = "hurt";
         move_disable = true;

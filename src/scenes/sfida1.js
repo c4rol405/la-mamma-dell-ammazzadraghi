@@ -1,12 +1,12 @@
 let img_sfida1;
 let sfondo;
-let muro1, muro2, muro3, muro4;
+let muro1, muro2, muro3, muro4, muro5;
 let img_platsfida;
 let platsfida;
 
 function preload(s) {
     //assets grafici
-    img_sfida1 = PP.assets.image.load(s, "assets/images/sfida-03.png");
+    img_sfida1 = PP.assets.image.load(s, "assets/images/sfida.png");
 
     img_platsfida = PP.assets.image.load(s, "assets/platform/grotta1.png");
 
@@ -29,28 +29,31 @@ function collision_platsfida(s, player, platsfida) {
 }
 function create(s) {
     create_player(s);
-    player.geometry.scale_x = 0.85;
-    player.geometry.scale_y = 0.85;
+    player.geometry.scale_x = 0.80;
+    player.geometry.scale_y = 0.80;
     configure_player_animations(s);
-    muro1 = PP.shapes.rectangle_add(s, 2600, 2634, 2000, 1, "0x000000", 0)
+    muro1 = PP.shapes.rectangle_add(s, 1800, 2960, 2000, 1, "0x000000", 0)
     PP.physics.add(s, muro1, PP.physics.type.STATIC);
     PP.physics.add_collider_f(s, player, muro1, collision_muro);
-    muro2 = PP.shapes.rectangle_add(s, 2600, 3284, 2000, 1, "0x000000", 0)
+    muro2 = PP.shapes.rectangle_add(s, 1700, 3610, 2000, 1, "0x000000", 0)
     PP.physics.add(s, muro2, PP.physics.type.STATIC);
     PP.physics.add_collider_f(s, player, muro2, collision_muro);
-    muro3 = PP.shapes.rectangle_add(s, 2224, 3000, 1, 800, "0x000000", 0)
+    muro3 = PP.shapes.rectangle_add(s, 1456, 3300, 1, 800, "0x000000", 0)
     PP.physics.add(s, muro3, PP.physics.type.STATIC);
     PP.physics.add_collider_f(s, player, muro3, collision_muro);
-    muro4 = PP.shapes.rectangle_add(s, 3450, 3000, 1, 800, "0x000000", 0)
+    muro4 = PP.shapes.rectangle_add(s, 2670, 3300, 1, 800, "0x000000", 0)
     PP.physics.add(s, muro4, PP.physics.type.STATIC);
     PP.physics.add_collider_f(s, player, muro4, collision_muro);
+    muro5 = PP.shapes.rectangle_add(s, 2560, 3170, 400, 1, "0x000000", 0)
+    PP.physics.add(s, muro5, PP.physics.type.STATIC);
+    PP.physics.add_collider_f(s, player, muro5, collision_muro);
     
-    sfondo = PP.assets.image.add(s, img_sfida1, 2195, 2602, 0, 0);
+    sfondo = PP.assets.image.add(s, img_sfida1, 1420, 2926, 0, 0);
     
-    platsfida = PP.assets.image.add(s, img_platsfida, 2500, 3154, 0, 0);
+    /*platsfida = PP.assets.image.add(s, img_platsfida, 2500, 3154, 0, 0);
     PP.physics.add(s, platsfida, PP.physics.type.STATIC); 
     PP.physics.add_collider_f(s, player, platsfida, collision_platsfida);
-    PP.physics.set_collision_rectangle(platsfida, 220, 50, 20, 12);
+    PP.physics.set_collision_rectangle(platsfida, 220, 50, 20, 12);*/
 
     create_drago(s);
 
@@ -59,7 +62,7 @@ function create(s) {
     PP.layers.add_to_layer(layer_player, player);
     PP.layers.set_z_index(layer_player, 10);
     
-    s.cameras.main.setBounds(2195, 2602, 1280, 720); //camera si ferma esattamente ai limiti della foto
+    s.cameras.main.setBounds(1420, 2926, 1280, 720); //camera si ferma esattamente ai limiti della foto
     PP.camera.start_follow(s, player, 0, 230); //camera segue il player
     
     //forse rallenterei player??

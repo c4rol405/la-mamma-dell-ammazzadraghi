@@ -9,7 +9,7 @@ let img_platform8;
 let img_platform9;
 let img_platform10;
 
-//ricordarsi di farle max 150 di distanza
+//ricordarsi di farle max 150 di distanza altrimenti il player non ci arriva
 
 function preload_platform(s) {
     img_platform1 = PP.assets.image.load(s, "assets/platform/albero1.png");
@@ -25,34 +25,55 @@ function preload_platform(s) {
 }
 
 function collision_platform(s, player, platform) {
-//Funzione di collisione con le piattaforme, devo verificare che il giocatore si trovi sopra e in quel caso aggiorno la variabile che abilita il salto
+//function di collisione con le piattaforme, devo verificare che il giocatore si trovi sopra e in quel caso aggiorno la variabile che abilita il salto
     if( player.geometry.x >= platform.geometry.x &&
         player.geometry.x <= platform.geometry.x + platform.geometry.display_width) {
             player.is_on_platform = true;
     }
 }
 
-function collision_platform_flip(s, player, platform) {
-    if (!platform.has_flipped) {
-        platform.has_flipped = true;
+function danno_platform(s, player) { //funziona esattamente come danno dell'enemy
+    if (player_immunity) return;
+    player_immunity = true;
+    PP.timers.add_timer(s, 1500, () => { player_immunity = false; }, false);
+    move_disable = true;
+    jump_disable = true;
+    let vite = PP.game_state.get_variable("cuori");
+    if (vite > 0) PP.game_state.set_variable("cuori", vite - 1);
+    if (vite - 1 <= 0) {
+        morte(s);
+    } else {
+        next_anim = "hurt";
+        PP.timers.add_timer(s, 1500, () => {
+            move_disable = false;
+            jump_disable = false;
+            next_anim = "stop";
+        }, false);
+    }
+}
 
+function collision_platform_flip(s, player, platform) {
+    // evita ri-trigger mentre è già in animazione
+    if (!platform.is_flipping) {
+        platform.is_flipping = true;
+        // dopo tot diventa pericolosa
         PP.timers.add_timer(s, 2000, () => {
             platform.geometry.flip_y = true;
             platform.is_deadly = true;
         }, false);
-        PP.timers.add_timer(s, 4000, () => {
+        // dopo tot ritorna normale (lo sommo al timer del flip)
+        PP.timers.add_timer(s, 5000, () => {
             platform.geometry.flip_y = false;
             platform.is_deadly = false;
+            platform.is_flipping = false; // così ritorna ad essere pronta per il prossimo contatto
         }, false);
     }
-
     player.is_on_platform = true;
     if (platform.is_deadly) {
-        if (is_dead) return;
-        is_dead = true;
-        morte(s, "lava");
+        danno_platform(s, player);
     }
 }
+
 
 function create_platform(s, player) {
     //platform centrali

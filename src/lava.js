@@ -1,10 +1,5 @@
-let is_dead = false;
-
 function collision_lava(s, player, lava) {
-    if (is_dead) return;
-
-    is_dead = true;
-    morte(s, "lava");
+    morte(s);
 }
 
 function create_lava(s, player) {

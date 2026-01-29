@@ -136,11 +136,9 @@ function salto (s, obj1, obj2) {
 }
 
 let morto = false;
-function morte(s, tipo) {
+function morte(s) {
     if (morto) return;
     morto = true;
-
-    death_cause = tipo;
     move_disable = true;
     jump_disable = true;
     player_immunity = true;
@@ -150,10 +148,5 @@ function morte(s, tipo) {
     curr_anim = "die";
     next_anim = "die";
     PP.assets.sprite.animation_play(player, "die");
-    PP.timers.add_timer(s, 1000, () => {game_over(s); }, false);
-}
-
-function game_over(s) {
-    if (death_cause === "lava") PP.scenes.start("gameover1");
-    else if (death_cause === "fantasma") PP.scenes.start("gameover2");
+    PP.timers.add_timer(s, 1000, () => {PP.scenes.start("gameover")}, false);
 }

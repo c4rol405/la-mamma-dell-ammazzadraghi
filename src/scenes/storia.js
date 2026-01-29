@@ -10,11 +10,11 @@ let pulsante_avanti, pulsante_indietro, pulsante_gotohome, pulsante_gotogame;
 
 function preload(s) {
     // Carica tavole
-    tavola1 = PP.assets.image.load(s, "assets/situe/testi1.jpg");
+    tavola1 = PP.assets.image.load(s, "assets/situe/t1.png");
     tavola2 = PP.assets.image.load(s, "assets/situe/scena1.png");
-    tavola3 = PP.assets.image.load(s, "assets/situe/testi2.jpg");
+    tavola3 = PP.assets.image.load(s, "assets/situe/t2.png");
     tavola4 = PP.assets.image.load(s, "assets/situe/scena2.png");
-    tavola5 = PP.assets.image.load(s, "assets/situe/testi3.jpg");
+    tavola5 = PP.assets.image.load(s, "assets/situe/t3.png");
     tavola6 = PP.assets.image.load(s, "assets/situe/scena3.png");
     tavole = [tavola1, tavola2, tavola3, tavola4, tavola5, tavola6];
 

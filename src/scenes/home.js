@@ -16,15 +16,17 @@ function preload (s) {
 
 function create (s){
     sfondo = PP.assets.image.add(s, sfondo_home, 0, 0, 0, 0);
-    pulsante_crediti = PP.assets.image.add(s, crediti, 65, 400, 0, 0);
+
+    pulsante_crediti = PP.assets.image.add(s, crediti, 65, 600, 0, 0);
     pulsante_crediti.geometry.scale_x = 0.2;
     pulsante_crediti.geometry.scale_y = 0.2;
-    pulsante_storia = PP.assets.image.add(s, storia, 65, 500, 0, 0);
+    pulsante_storia = PP.assets.image.add(s, storia, 65, 400, 0, 0);
     pulsante_storia.geometry.scale_x = 0.2;
     pulsante_storia.geometry.scale_y = 0.2;
-    pulsante_game = PP.assets.image.add(s, game, 65, 600, 0, 0);
+    pulsante_game = PP.assets.image.add(s, game, 65, 500, 0, 0);
     pulsante_game.geometry.scale_x = 0.2;
     pulsante_game.geometry.scale_y = 0.2;
+
     PP.interactive.mouse.add(pulsante_storia, "pointerdown", goto_storia);
     PP.interactive.mouse.add(pulsante_crediti, "pointerdown", goto_crediti);
     PP.interactive.mouse.add(pulsante_game, "pointerdown", goto_game);

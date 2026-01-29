@@ -1,13 +1,21 @@
 let img_drago;
 let drago;
 let img_fireball;
-let fireball;
+let fireballorizz;
+let img_fireball2;
+let fireballdiag;
 let fireball_al_muro = false; 
 let fireballD_al_muro = false; 
 
+let img_perg;
+let pergamena;
+
 function preload_drago(s) {
     img_drago = PP.assets.sprite.load_spritesheet(s, "assets/images/drago.png", 480, 400);
-    img_fireball = PP.assets.sprite.load_spritesheet(s, "assets/images/fireball.png", 220, 200);
+    img_fireball = PP.assets.sprite.load_spritesheet(s, "assets/images/fireballorizz.png", 150, 150);
+    img_fireball2 = PP.assets.sprite.load_spritesheet(s, "assets/images/fireballdiag.png", 150, 150);
+
+    img_perg = PP.assets.image.load(s, "assets/images/pergamena.png");
 }
 
 function collision_fireball(s, fireball, player) {
@@ -24,7 +32,7 @@ function collision_fireball(s, fireball, player) {
     
     // Se l’ultima vita è stata persa, chiama morte(s)
     if (vite - 1 <= 0) {
-        morte(s, "fantasma");
+        morte(s);
     } else {
         next_anim = "hurt";
         move_disable = true;
@@ -63,7 +71,7 @@ function spara_fireballD(s) {
 
 
 function create_drago(s) {
-    drago = PP.assets.sprite.add(s, img_drago, 3050, 2950, 0, 0);
+    drago = PP.assets.sprite.add(s, img_drago, 2300, 3250, 0, 0);
     PP.physics.add(s, drago, PP.physics.type.STATIC);
     PP.assets.sprite.animation_add(drago, "drago", 0, 12, 4, -1);
     PP.assets.sprite.animation_play(drago, "drago");
@@ -72,44 +80,42 @@ function create_drago(s) {
     PP.layers.add_to_layer(layer_drago, drago);
     PP.layers.set_z_index(layer_drago, 4);
     
-    fireballorizz = PP.assets.sprite.add(s, img_fireball, 3180, 3150, 0, 0);
+    fireballorizz = PP.assets.sprite.add(s, img_fireball, 2480, 3420, 0, 0);
     PP.physics.add(s, fireballorizz, PP.physics.type.DYNAMIC);
-    fireballorizz.geometry.scale_x = 0.7;
-    fireballorizz.geometry.scale_y = 0.7;
-    PP.assets.sprite.animation_add(fireballorizz, "fuoco", 0, 4, 2, -1);
-    PP.assets.sprite.animation_add(fireballorizz, "muro", 5, 8, 6, 0);
+    PP.assets.sprite.animation_add(fireballorizz, "fuoco", 3, 7, 2, -1);
+    PP.assets.sprite.animation_add(fireballorizz, "muro", 8, 11, 6, 0);
     PP.assets.sprite.animation_play(fireballorizz, "fuoco");
     PP.physics.set_allow_gravity(fireballorizz, false); 
     PP.physics.add_overlap_f(s, fireballorizz, player, collision_fireball);
-    PP.physics.set_collision_rectangle(fireballorizz, 200, 80, 20, 60);
+    PP.physics.set_collision_rectangle(fireballorizz, 100, 60, 0, 50);
     // Primo sparo singolo
     PP.timers.add_timer(s, 600, () => spara_fireball(s), false);
 
-    fireballdiag = PP.assets.sprite.add(s, img_fireball, 3180, 3100, 0, 0);
+    fireballdiag = PP.assets.sprite.add(s, img_fireball2, 3180, 2900, 0, 0);
     PP.physics.add(s, fireballdiag, PP.physics.type.DYNAMIC);
-    fireballdiag.geometry.scale_x = 0.7;
-    fireballdiag.geometry.scale_y = 0.7;
-    PP.assets.sprite.animation_add(fireballdiag, "fuoco", 0, 4, 2, -1);
-    PP.assets.sprite.animation_add(fireballdiag, "muro", 5, 8, 6, 0);
+    PP.assets.sprite.animation_add(fireballdiag, "fuoco", 3, 7, 2, -1);
+    PP.assets.sprite.animation_add(fireballdiag, "muro", 8, 11, 6, 0);
     PP.assets.sprite.animation_play(fireballdiag, "fuoco");
     PP.physics.set_allow_gravity(fireballdiag, false); 
     PP.physics.add_overlap_f(s, fireballdiag, player, collision_fireball);
-    PP.physics.set_collision_rectangle(fireballdiag, 200, 80, 20, 60);
+    PP.physics.set_collision_rectangle(fireballdiag, 100, 60, 0, 50);
     // Primo sparo singolo
     PP.timers.add_timer(s, 2000, () => spara_fireballD(s), false);
+
+    pergamena = PP.assets.image.add(s, img_perg, 24, 24, 0, 0);
 }
 
 
 function update_drago(s) {
-    if (fireballorizz.geometry.x < 2214 && !fireball_al_muro) {
+    if (fireballorizz.geometry.x < 1450 && !fireball_al_muro) {
         fireball_al_muro = true;
         PP.physics.set_velocity_x(fireballorizz, 0);
         fireballorizz.current_frame = 5; // primo frame della animazione muro
         PP.assets.sprite.animation_play(fireballorizz, "muro");
         // dopo animazione, reset posizione e riparti
         PP.timers.add_timer(s, 900, () => {
-            fireballorizz.geometry.x = 3180;
-            fireballorizz.geometry.y = 3150;
+            fireballorizz.geometry.x = 2480;
+            fireballorizz.geometry.y = 3420;
             PP.assets.sprite.animation_play(fireballorizz, "fuoco");
             PP.physics.set_velocity_x(fireballorizz, -400);
             fireball_al_muro = false;
@@ -123,9 +129,9 @@ function update_drago(s) {
         fireballdiag.current_frame = 5; // primo frame della animazione muro
         PP.assets.sprite.animation_play(fireballdiag, "muro");
         // dopo animazione, reset posizione e riparti
-        PP.timers.add_timer(s, 900, () => {
-            fireballdiag.geometry.x = 3180;
-            fireballdiag.geometry.y = 3100;
+        PP.timers.add_timer(s, 1000, () => {
+            fireballdiag.geometry.x = 2170;
+            fireballdiag.geometry.y = 3620;
             PP.assets.sprite.animation_play(fireballdiag, "fuoco");
             PP.physics.set_velocity_x(fireballdiag, -400);
             PP.physics.set_velocity_y(fireballdiag, -200);
@@ -136,6 +142,4 @@ function update_drago(s) {
 
 function destroy_drago(s) {
 }
-
-PP.scenes.add("drago", preload, create, update, destroy);
 
