@@ -11,6 +11,8 @@ function preload(s) {
 function create(s) {
     credits = PP.assets.image.add(s, sfondo_crediti, 0, 0, 0, 0);
     pulsante_home = PP.assets.image.add(s, home, 640, 650, 0.5, 0.5);
+    pulsante_home.geometry.scale_x = 0.1;
+	pulsante_home.geometry.scale_y = 0.1;
     PP.interactive.mouse.add(pulsante_home, "pointerdown", goto_home);
 }
 

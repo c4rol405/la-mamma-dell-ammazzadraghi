@@ -16,6 +16,7 @@ let curr_anim = "stop"; //animazione corrente
 
 let next_anim;
 next_anim = curr_anim;
+let morto = false;
 
 function configure_player_animations(s) {
     // Configuro le animazioni secondo lo spritesheet
@@ -135,7 +136,7 @@ function salto (s, obj1, obj2) {
     }
 }
 
-let morto = false;
+
 function morte(s) {
     if (morto) return;
     morto = true;

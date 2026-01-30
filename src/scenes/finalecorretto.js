@@ -11,9 +11,9 @@ function preload (s) {
 function create (s) {
     bgfc = PP.assets.image.add (s, fc, 0, 0, 0, 0);
 
-    pulsantefc_home = PP.assets.image.add(s, fctohome, 640, 650, 0.5, 0.5);
-    pulsantemortetohome.geometry.scale_x = 0.08;
-    pulsantemortetohome.geometry.scale_y = 0.08;
+    pulsantefc_home = PP.assets.image.add(s, fctohome, 640, 60, 0.5, 0.5);
+    pulsantefc_home.geometry.scale_x = 0.1;
+    pulsantefc_home.geometry.scale_y = 0.1;
     PP.interactive.mouse.add(pulsantefc_home, "pointerdown", () => PP.scenes.start("home"));
 }
 
