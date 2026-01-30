@@ -43,6 +43,10 @@ function create_hud(s) {
     layer_hud = PP.layers.create(s);        // creo layer dedicato all'HUD
     PP.layers.set_z_index(layer_hud, 60);   // sopra il mondo ma sotto tutorial
 
+    //PP.game_state.set_variable("consapevolezza", 0);
+    PP.game_state.set_variable("cuori", 3);
+    //PP.game_state.set_variable("budini", 7);
+
     menu = PP.assets.image.add(s, img_menu, 24, 14, 0, 0);
     menu.geometry.scale_x = 0.08;
     menu.geometry.scale_y = 0.08;

@@ -41,7 +41,7 @@ function seleziona_tavole(s) {
     // Se siamo all'ultima tavola
 	if (numero_tavola === tavole.length - 1) {
 		pulsante_indietro = PP.assets.image.add(s, p_indietro, 70, 370, 0.5, 0.5);
-		pulsante_gotohome = PP.assets.image.add(s, p_gotohome, 640, 660, 0.5, 0.5);
+		pulsante_gotohome = PP.assets.image.add(s, p_gotohome, 640, 650, 0.5, 0.5);
 		pulsante_gotogame = PP.assets.image.add(s, p_gotogame, 1220, 370, 0.5, 0.5);
 		
 		pulsante_indietro.geometry.scale_x = 0.1;
@@ -58,7 +58,7 @@ function seleziona_tavole(s) {
 	} else {
 		// pulsanti normali
 		pulsante_avanti = PP.assets.image.add(s, p_avanti, 1220, 370, 0.5, 0.5);
-		pulsante_gotohome = PP.assets.image.add(s, p_gotohome, 640, 660, 0.5, 0.5);
+		pulsante_gotohome = PP.assets.image.add(s, p_gotohome, 640, 650, 0.5, 0.5);
 
 		pulsante_avanti.geometry.scale_x = 0.1;
 		pulsante_avanti.geometry.scale_y = 0.1;

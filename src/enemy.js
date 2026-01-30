@@ -26,13 +26,15 @@ function danno_player(s, fantasma, player) {
         next_anim = "hurt";
         move_disable = true;
         jump_disable = true;
-        PP.timers.add_timer(s, 1500, () => {
+        PP.timers.add_timer(s, 500, () => {
             move_disable = false;
             jump_disable = false;
-            player_immunity = false;
             PP.physics.set_immovable(player, false);
             next_anim = "stop";
         }, false);
+        PP.timers.add_timer (s, 1550, () => {
+            player_immunity = false;
+    }, false);
     }
 }
 

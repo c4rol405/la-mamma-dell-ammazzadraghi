@@ -22,7 +22,7 @@ function configure_player_animations(s) {
     PP.assets.sprite.animation_add(player, "walk", 10, 17, 12, -1);
     PP.assets.sprite.animation_add(player, "run", 20, 27, 12, -1);
     PP.assets.sprite.animation_add(player, "jump_up", 32, 34, 5, 0);
-    PP.assets.sprite.animation_add(player, "jump_down", 35, 40, 5, 0);
+    PP.assets.sprite.animation_add(player, "jump_down", 35, 39, 5, 0);
     PP.assets.sprite.animation_add(player, "stop", 0, 9, 6, -1);
     PP.assets.sprite.animation_add(player, "hurt", 40, 44, 8, 0);
     PP.assets.sprite.animation_add(player, "die", 45, 49, 8, 0);
