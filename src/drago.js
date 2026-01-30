@@ -7,15 +7,10 @@ let fireballdiag;
 let fireball_al_muro = false; 
 let fireballD_al_muro = false; 
 
-let img_perg;
-let pergamena;
-
 function preload_drago(s) {
     img_drago = PP.assets.sprite.load_spritesheet(s, "assets/images/drago.png", 480, 400);
     img_fireball = PP.assets.sprite.load_spritesheet(s, "assets/images/fireballorizz.png", 150, 150);
     img_fireball2 = PP.assets.sprite.load_spritesheet(s, "assets/images/fireballdiag.png", 150, 150);
-
-    img_perg = PP.assets.image.load(s, "assets/images/pergamena.png");
 }
 
 function collision_fireball(s, fireball, player) {
@@ -101,8 +96,6 @@ function create_drago(s) {
     PP.physics.set_collision_rectangle(fireballdiag, 100, 60, 0, 50);
     // Primo sparo singolo
     PP.timers.add_timer(s, 2000, () => spara_fireballD(s), false);
-
-    pergamena = PP.assets.image.add(s, img_perg, 24, 24, 0, 0);
 }
 
 

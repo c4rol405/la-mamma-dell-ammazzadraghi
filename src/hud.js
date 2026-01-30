@@ -58,8 +58,6 @@ function create_hud(s) {
     PP.interactive.mouse.add(tutorial, "pointerdown", () => {
         if (!comandi_aperti) {
             comandi = PP.assets.image.add(s, img_comandi, 640, 360, 0.5, 0.5); // centrato nello schermo
-            comandi.geometry.scale_x = 1;
-            comandi.geometry.scale_y = 1;
             comandi.tile_geometry.scroll_factor_x = 0;
             comandi.tile_geometry.scroll_factor_y = 0;
             comandi_aperti = true;

@@ -5,7 +5,7 @@ let porta;
 
 function preload(s) {
     //assets grafici
-    img_map = PP.assets.image.load(s, "assets/images/mappaf.png");
+    img_map = PP.assets.image.load(s, "assets/images/map.png");
     img_porta = PP.assets.image.load(s, "assets/images/porta.png");
 
     //elementi js
@@ -27,7 +27,7 @@ function create(s) {
     move_disable = false;
     jump_disable = false;
     player_immunity = false;
-    
+
     map = PP.assets.image.add(s, img_map, 0, 0, 0, 0);
     porta = PP.assets.image.add(s, img_porta, 9474, 2786, 0, 0);
 

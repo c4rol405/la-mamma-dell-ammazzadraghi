@@ -11,17 +11,14 @@ let c_premuta = false;  // C premuto solo una volta
 let p_bloccato = false; // P bloccato dopo che C è stato premuto
 
 function preload_dialogo (s){
-   img_testi = PP.assets.sprite.load_spritesheet(s, "assets/meg/testimeg.png", 550, 200);
+   img_testi = PP.assets.sprite.load_spritesheet(s, "assets/meg/testimeg.png", 330, 120);
 }
 
 function create_dialogo (s) {
-    testi = PP.assets.sprite.add(s, img_testi, 2810, 2760, 0, 0);
+    testi = PP.assets.sprite.add(s, img_testi, 2980, 2800, 0.5, 0.5);
 
     testi.tile_geometry.x = 0;
     testi.tile_geometry.y = 0;
-
-    testi.geometry.scale_x = 0.6;
-    testi.geometry.scale_y = 0.6;
 
     // Configuro le animazioni secondo lo spritesheet
     PP.assets.sprite.animation_add(testi, "P", 0, 1, 6, -1);
