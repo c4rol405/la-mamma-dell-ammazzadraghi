@@ -19,10 +19,10 @@ function preload(s) {
     tavole = [tavola1, tavola2, tavola3, tavola4, tavola5, tavola6];
 
     // Carica immagini pulsanti (solo per add successivo)
-    p_avanti = PP.assets.image.load(s, "assets/icone/avanti.png");
-    p_indietro = PP.assets.image.load(s, "assets/icone/indietro.png");
-    p_gotohome = PP.assets.image.load(s, "assets/icone/home_icona.png");
-    p_gotogame = PP.assets.image.load(s, "assets/icone/iconagame.png");
+    p_avanti = PP.assets.image.load(s, "assets/icone/p_avanti.png");
+    p_indietro = PP.assets.image.load(s, "assets/icone/p_indietro.png");
+    p_gotohome = PP.assets.image.load(s, "assets/icone/home.png");
+    p_gotogame = PP.assets.image.load(s, "assets/icone/gioca.png");
 }
 
 function seleziona_tavole(s) {
@@ -41,13 +41,15 @@ function seleziona_tavole(s) {
     // Se siamo all'ultima tavola
 	if (numero_tavola === tavole.length - 1) {
 		pulsante_indietro = PP.assets.image.add(s, p_indietro, 70, 370, 0.5, 0.5);
-		pulsante_gotohome = PP.assets.image.add(s, p_gotohome, 640, 650, 0.5, 0.5);
+		pulsante_gotohome = PP.assets.image.add(s, p_gotohome, 640, 660, 0.5, 0.5);
 		pulsante_gotogame = PP.assets.image.add(s, p_gotogame, 1220, 370, 0.5, 0.5);
 		
-		pulsante_indietro.geometry.scale_x = 0.15;
-		pulsante_indietro.geometry.scale_y = 0.15;
+		pulsante_indietro.geometry.scale_x = 0.1;
+		pulsante_indietro.geometry.scale_y = 0.1;
 		pulsante_gotogame.geometry.scale_x = 0.1;
 		pulsante_gotogame.geometry.scale_y = 0.1;
+		pulsante_gotohome.geometry.scale_x = 0.1;
+		pulsante_gotohome.geometry.scale_y = 0.1;
 
 		PP.interactive.mouse.add(pulsante_indietro, "pointerdown", () => tavola_prima(s));
 		PP.interactive.mouse.add(pulsante_gotohome, "pointerdown", () => PP.scenes.start("home"));
@@ -56,18 +58,20 @@ function seleziona_tavole(s) {
 	} else {
 		// pulsanti normali
 		pulsante_avanti = PP.assets.image.add(s, p_avanti, 1220, 370, 0.5, 0.5);
-		pulsante_gotohome = PP.assets.image.add(s, p_gotohome, 640, 650, 0.5, 0.5);
+		pulsante_gotohome = PP.assets.image.add(s, p_gotohome, 640, 660, 0.5, 0.5);
 
-		pulsante_avanti.geometry.scale_x = 0.15;
-		pulsante_avanti.geometry.scale_y = 0.15;
+		pulsante_avanti.geometry.scale_x = 0.1;
+		pulsante_avanti.geometry.scale_y = 0.1;
+		pulsante_gotohome.geometry.scale_x = 0.1;
+		pulsante_gotohome.geometry.scale_y = 0.1;
 
 		PP.interactive.mouse.add(pulsante_gotohome, "pointerdown", () => PP.scenes.start("home"));
 
 		// Aggiungi pulsante indietro solo se NON siamo alla prima tavola
 		if (numero_tavola > 0) {
 			pulsante_indietro = PP.assets.image.add(s, p_indietro, 70, 370, 0.5, 0.5);
-			pulsante_indietro.geometry.scale_x = 0.15;
-			pulsante_indietro.geometry.scale_y = 0.15;
+			pulsante_indietro.geometry.scale_x = 0.1;
+			pulsante_indietro.geometry.scale_y = 0.1;
 			PP.interactive.mouse.add(pulsante_indietro, "pointerdown", () => tavola_prima(s));
 		}
 

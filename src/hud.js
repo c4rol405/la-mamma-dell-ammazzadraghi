@@ -18,7 +18,7 @@ PP.game_state.set_variable ("cuori", 3);
 
 let img_budini;
 let budini;
-PP.game_state.set_variable ("budini", 10);
+PP.game_state.set_variable ("budini", 7);
 let budini_prima = -1;
 
 let img_fine;
@@ -27,13 +27,13 @@ let img_sfida;
 let pulsantesfida;
 
 function preload_hud(s) {
-    img_menu = PP.assets.image.load(s, "assets/icone/homenuovo.png");
-    img_tutorial = PP.assets.image.load(s, "assets/icone/iconaagain.png");
+    img_menu = PP.assets.image.load(s, "assets/icone/home.png");
+    img_tutorial = PP.assets.image.load(s, "assets/icone/i.png");
     img_comandi = PP.assets.image.load(s, "assets/icone/comandi.png");
 
-    img_barra = PP.assets.sprite.load_spritesheet(s, "assets/icone/bar3.png", 268, 48);
-    img_cuori = PP.assets.sprite.load_spritesheet(s, "assets/icone/cuoricini.png", 170, 50);
-    img_budini = PP.assets.sprite.load_spritesheet(s, "assets/icone/budi.png", 180, 80);
+    img_barra = PP.assets.sprite.load_spritesheet(s, "assets/icone/spriteconsap.png", 208, 61);
+    img_cuori = PP.assets.sprite.load_spritesheet(s, "assets/icone/spritecuori.png", 145, 50);
+    img_budini = PP.assets.sprite.load_spritesheet(s, "assets/icone/spritebudini.png", 213, 68);
 
     img_fine = PP.assets.image.load(s, "assets/icone/fine.png");
     img_sfida = PP.assets.image.load(s, "assets/icone/sfida.png");
@@ -43,16 +43,16 @@ function create_hud(s) {
     layer_hud = PP.layers.create(s);        // creo layer dedicato all'HUD
     PP.layers.set_z_index(layer_hud, 60);   // sopra il mondo ma sotto tutorial
 
-    menu = PP.assets.image.add(s, img_menu, 24, 24, 0, 0);
-    menu.geometry.scale_x = 0.3;
-    menu.geometry.scale_y = 0.3;
+    menu = PP.assets.image.add(s, img_menu, 24, 14, 0, 0);
+    menu.geometry.scale_x = 0.08;
+    menu.geometry.scale_y = 0.08;
     PP.interactive.mouse.add(menu, "pointerdown", () => PP.scenes.start("home"));
     menu.tile_geometry.scroll_factor_x = 0;
     menu.tile_geometry.scroll_factor_y = 0;
 
-    tutorial = PP.assets.image.add(s, img_tutorial, 94, 24, 0, 0);
-    tutorial.geometry.scale_x = 0.10;
-    tutorial.geometry.scale_y = 0.10;
+    tutorial = PP.assets.image.add(s, img_tutorial, 80, 13, 0, 0);
+    tutorial.geometry.scale_x = 0.08;
+    tutorial.geometry.scale_y = 0.08;
     tutorial.tile_geometry.scroll_factor_x = 0;
     tutorial.tile_geometry.scroll_factor_y = 0;
     PP.interactive.mouse.add(tutorial, "pointerdown", () => {
@@ -68,30 +68,30 @@ function create_hud(s) {
         }
     });
 
-    barra = PP.assets.sprite.add(s, img_barra, 710, 24, 0, 0);
+    barra = PP.assets.sprite.add(s, img_barra, 820, 14, 0, 0);
     barra.tile_geometry.scroll_factor_x = 0;
     barra.tile_geometry.scroll_factor_y = 0;
-    PP.assets.sprite.animation_add(barra, "consapevolezza: 0", 0, 1, 1, -1);
-    PP.assets.sprite.animation_add(barra, "consapevolezza: 1", 2, 3, 1, -1);
-    PP.assets.sprite.animation_add(barra, "consapevolezza: 2", 4, 5, 1, -1);
-    PP.assets.sprite.animation_add(barra, "consapevolezza: 3", 6, 7, 1, -1);
-    PP.assets.sprite.animation_add(barra, "consapevolezza: 4", 8, 9, 1, -1);
-    PP.assets.sprite.animation_add(barra, "consapevolezza: 5", 10, 11, 1, -1);
-    PP.assets.sprite.animation_add(barra, "consapevolezza: 6", 12, 13, 1, -1);
-    PP.assets.sprite.animation_add(barra, "consapevolezza: 7", 14, 15, 1, -1);
-    PP.assets.sprite.animation_add(barra, "consapevolezza: 8", 16, 17, 1, -1);
-    PP.assets.sprite.animation_add(barra, "consapevolezza: 9", 18, 19, 1, -1);
-    PP.assets.sprite.animation_add(barra, "consapevolezza: 10", 20, 21, 1, -1);
-    PP.assets.sprite.animation_add(barra, "consapevolezza: 11", 22, 23, 1, -1);
-    PP.assets.sprite.animation_add(barra, "consapevolezza: 12", 24, 25, 1, -1);
-    PP.assets.sprite.animation_add(barra, "consapevolezza: 13", 26, 27, 1, -1);
-    PP.assets.sprite.animation_add(barra, "consapevolezza: 14", 28, 29, 1, -1);
-    PP.assets.sprite.animation_add(barra, "consapevolezza: 15", 30, 31, 1, -1);
-    PP.assets.sprite.animation_add(barra, "consapevolezza: 16", 32, 33, 1, -1);
-    PP.assets.sprite.animation_add(barra, "consapevolezza: 17", 34, 35, 1, -1);
-    PP.assets.sprite.animation_add(barra, "consapevolezza: 18", 36, 37, 1, -1);
-    PP.assets.sprite.animation_add(barra, "consapevolezza: 19", 38, 39, 1, -1);
-    PP.assets.sprite.animation_add(barra, "consapevolezza: 20", 40, 41, 1, -1);
+    PP.assets.sprite.animation_add(barra, "consapevolezza: 0", 0, 0, 1, -1);
+    PP.assets.sprite.animation_add(barra, "consapevolezza: 1", 1, 1, 1, -1);
+    PP.assets.sprite.animation_add(barra, "consapevolezza: 2", 2, 2, 1, -1);
+    PP.assets.sprite.animation_add(barra, "consapevolezza: 3", 3, 3, 1, -1);
+    PP.assets.sprite.animation_add(barra, "consapevolezza: 4", 4, 4, 1, -1);
+    PP.assets.sprite.animation_add(barra, "consapevolezza: 5", 5, 5, 1, -1);
+    PP.assets.sprite.animation_add(barra, "consapevolezza: 6", 6, 6, 1, -1);
+    PP.assets.sprite.animation_add(barra, "consapevolezza: 7", 7, 7, 1, -1);
+    PP.assets.sprite.animation_add(barra, "consapevolezza: 8", 8, 8, 1, -1);
+    PP.assets.sprite.animation_add(barra, "consapevolezza: 9", 9, 9, 1, -1);
+    PP.assets.sprite.animation_add(barra, "consapevolezza: 10", 10, 10, 1, -1);
+    PP.assets.sprite.animation_add(barra, "consapevolezza: 11", 11, 11, 1, -1);
+    PP.assets.sprite.animation_add(barra, "consapevolezza: 12", 12, 12, 1, -1);
+    PP.assets.sprite.animation_add(barra, "consapevolezza: 13", 13, 13, 1, -1);
+    PP.assets.sprite.animation_add(barra, "consapevolezza: 14", 14, 14, 1, -1);
+    PP.assets.sprite.animation_add(barra, "consapevolezza: 15", 15, 15, 1, -1);
+    PP.assets.sprite.animation_add(barra, "consapevolezza: 16", 16, 16, 1, -1);
+    PP.assets.sprite.animation_add(barra, "consapevolezza: 17", 17, 17, 1, -1);
+    PP.assets.sprite.animation_add(barra, "consapevolezza: 18", 18, 18, 1, -1);
+    PP.assets.sprite.animation_add(barra, "consapevolezza: 19", 19, 19, 1, -1);
+    PP.assets.sprite.animation_add(barra, "consapevolezza: 20", 20, 20, 1, -1);
     
     //PP.assets.sprite.animation_play(barra, "consapevolezza: 0");
 
@@ -103,30 +103,27 @@ function create_hud(s) {
     PP.assets.sprite.animation_play(barra, "consapevolezza: " + consapevolezza_corrente);
 
 
-    cuori = PP.assets.sprite.add(s, img_cuori, 470, 22, 0, 0);
+    cuori = PP.assets.sprite.add(s, img_cuori, 655, 22, 0, 0);
     cuori.tile_geometry.scroll_factor_x = 0;
     cuori.tile_geometry.scroll_factor_y = 0;
-    PP.assets.sprite.animation_add(cuori, "cuori: 3", 0, 1, 1, -1);
-    PP.assets.sprite.animation_add(cuori, "cuori: 2", 2, 3, 1, -1);
-    PP.assets.sprite.animation_add(cuori, "cuori: 1", 4, 5, 1, -1);
-    PP.assets.sprite.animation_add(cuori, "cuori: 0", 6, 7, 1, -1);
+    PP.assets.sprite.animation_add(cuori, "cuori: 3", 0, 0, 1, -1);
+    PP.assets.sprite.animation_add(cuori, "cuori: 2", 1, 1, 1, -1);
+    PP.assets.sprite.animation_add(cuori, "cuori: 1", 2, 2, 1, -1);
+    PP.assets.sprite.animation_add(cuori, "cuori: 0", 3, 3, 1, -1);
     PP.assets.sprite.animation_play(cuori, "cuori: 3");
 
-    budini = PP.assets.sprite.add(s, img_budini, 1080, 10, 0, 0);
+    budini = PP.assets.sprite.add(s, img_budini, 1050, 10, 0, 0);
     budini.tile_geometry.scroll_factor_x = 0;
     budini.tile_geometry.scroll_factor_y = 0;
-    PP.assets.sprite.animation_add(budini, "budini: 10", 0, 1, 1, -1);
-    PP.assets.sprite.animation_add(budini, "budini: 9", 2, 3, 1, -1);
-    PP.assets.sprite.animation_add(budini, "budini: 8", 4, 5, 1, -1);
-    PP.assets.sprite.animation_add(budini, "budini: 7", 6, 7, 1, -1);
-    PP.assets.sprite.animation_add(budini, "budini: 6", 8, 9, 1, -1);
-    PP.assets.sprite.animation_add(budini, "budini: 5", 10, 11, 1, -1);
-    PP.assets.sprite.animation_add(budini, "budini: 4", 12, 13, 1, -1);
-    PP.assets.sprite.animation_add(budini, "budini: 3", 14, 15, 1, -1);
-    PP.assets.sprite.animation_add(budini, "budini: 2", 16, 17, 1, -1);
-    PP.assets.sprite.animation_add(budini, "budini: 1", 18, 19, 1, -1);
-    PP.assets.sprite.animation_add(budini, "budini: 0", 20, 21, 1, -1);
-    PP.assets.sprite.animation_play(budini, "budini: 10");
+    PP.assets.sprite.animation_add(budini, "budini: 7", 0, 0, 1, -1);
+    PP.assets.sprite.animation_add(budini, "budini: 6", 1, 1, 1, -1);
+    PP.assets.sprite.animation_add(budini, "budini: 5", 2, 2, 1, -1);
+    PP.assets.sprite.animation_add(budini, "budini: 4", 3, 3, 1, -1);
+    PP.assets.sprite.animation_add(budini, "budini: 3", 4, 4, 1, -1);
+    PP.assets.sprite.animation_add(budini, "budini: 2", 5, 5, 1, -1);
+    PP.assets.sprite.animation_add(budini, "budini: 1", 6, 6, 1, -1);
+    PP.assets.sprite.animation_add(budini, "budini: 0", 7, 7, 1, -1);
+    PP.assets.sprite.animation_play(budini, "budini: 7");
 
     pulsantefine = PP.assets.image.add(s, img_fine, 9500, 2870, 0.5, 0.5);
     

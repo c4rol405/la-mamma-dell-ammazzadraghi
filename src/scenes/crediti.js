@@ -5,7 +5,7 @@ let pulsante_home;
 
 function preload(s) {
     sfondo_crediti = PP.assets.image.load(s, "assets/situe/crediti.png");
-    home = PP.assets.image.load(s, "assets/icone/home_icona.png");
+    home = PP.assets.image.load(s, "assets/icone/home.png");
 }
 
 function create(s) {

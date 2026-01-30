@@ -7,8 +7,8 @@ let pulsantemortetoagain;
 
 function preload (s) {
     gameover = PP.assets.image.load (s, "assets/situe/morte.png"); 
-    mortetohome = PP.assets.image.load(s, "assets/icone/home_icona.png"); 
-    mortetoagain = PP.assets.image.load(s, "assets/icone/iconaagain.png");
+    mortetohome = PP.assets.image.load(s, "assets/icone/home.png"); 
+    mortetoagain = PP.assets.image.load(s, "assets/icone/rigioca.png");
 }
 
 function restart_game_keep_hud(s) {
@@ -28,12 +28,14 @@ function restart_game_keep_hud(s) {
 function create (s) {
     bgmorte = PP.assets.image.add (s, gameover, 0, 0, 0, 0);
 
-    pulsantemortetohome = PP.assets.image.add(s, mortetohome, 600, 650, 0.5, 0.5);
+    pulsantemortetohome = PP.assets.image.add(s, mortetohome, 600, 630, 0.5, 0.5);
     PP.interactive.mouse.add(pulsantemortetohome, "pointerdown", () => PP.scenes.start("home"));
 
-    pulsantemortetoagain = PP.assets.image.add(s, mortetoagain, 680, 650, 0.5, 0.5);
-    pulsantemortetoagain.geometry.scale_x = 0.11;
-    pulsantemortetoagain.geometry.scale_y = 0.11;
+    pulsantemortetoagain = PP.assets.image.add(s, mortetoagain, 680, 630, 0.5, 0.5);
+    pulsantemortetoagain.geometry.scale_x = 0.08;
+    pulsantemortetoagain.geometry.scale_y = 0.08;
+    pulsantemortetohome.geometry.scale_x = 0.08;
+    pulsantemortetohome.geometry.scale_y = 0.08;
     PP.interactive.mouse.add(pulsantemortetoagain, "pointerdown", () => restart_game_keep_hud(s));
 }
 
