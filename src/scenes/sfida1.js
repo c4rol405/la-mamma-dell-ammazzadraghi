@@ -4,6 +4,7 @@ let muro1, muro2, muro3, muro4, muro5;
 let img_pergamena, pergamena;
 let img_pergsfida, pergaperta = false, pergsfida;
 let layer_perg;
+let img_portale, portale;
 
 function preload(s) {
     //assets grafici
@@ -11,6 +12,8 @@ function preload(s) {
     
     img_pergamena = PP.assets.image.load(s, "assets/meg/pergamena.png");
     img_pergsfida = PP.assets.image.load(s, "assets/meg/pergsfida.png");
+
+    img_portale = PP.assets.image.load(s, "assets/meg/portale.png");
 
     //elementi js
     preload_player(s);
@@ -51,23 +54,32 @@ function create(s) {
 
     layer_perg = PP.layers.create(s);
     PP.layers.set_z_index(layer_perg, 70);
-    pergamena = PP.assets.image.add(s, img_pergamena, 1470, 3500, 0, 0);
-    PP.interactive.mouse.add(pergamena, "pointerdown", () => {
+    pergamena = PP.assets.image.add(s, img_pergamena, 1470, 3510, 0, 0);
+    PP.physics.add(s, pergamena, PP.physics.type.STATIC);
+    PP.physics.add_collider_f(s, player, pergamena, (s, player, pergamena) => {
         if (!pergaperta) {
             pergsfida = PP.assets.image.add(s, img_pergsfida, 640, 360, 0.5, 0.5);
             pergsfida.tile_geometry.scroll_factor_x = 0;
             pergsfida.tile_geometry.scroll_factor_y = 0;
             pergaperta = true;
             PP.layers.add_to_layer(layer_perg, pergsfida);
-        } else {
-            PP.assets.destroy(pergsfida);
-            pergaperta = false;
+
+            // opzionale: sparisce la pergamena originale
+            PP.assets.destroy(pergamena);
+
+            portale = PP.assets.image.add(s, img_portale, 2400, 2870, 0, 0);
+            PP.physics.add(s, portale, PP.physics.type.STATIC);
+            PP.physics.add_collider_f(s, player, portale, (s, player, portale) => {
+                PP.scenes.start("scene");
+            });
+            PP.physics.set_collision_rectangle(portale, 150, 200, 100, 100);
         }
     });
 
     create_platsfida(s, player);
     create_drago(s);
     create_hud(s);
+    create_budino(s);
 
     // codice per creare un layer sopra tutti per il player
     let layer_player = PP.layers.create(s);
@@ -75,7 +87,6 @@ function create(s) {
     PP.layers.set_z_index(layer_player, 10);
     
     s.cameras.main.setBounds(1420, 2926, 1280, 720); //camera si ferma esattamente ai limiti della foto
-    PP.camera.start_follow(s, player, 0, 230); //camera segue il player
     
     //forse rallenterei player??
 }
@@ -86,6 +97,12 @@ function update(s) {
     update_budino(s, player);
     update_drago(s);
     update_hud(s);
+
+    if (pergaperta && pergsfida && PP.interactive.kb.is_key_down(s, PP.key_codes.C)) {
+        PP.assets.destroy(pergsfida);
+        pergsfida = null;     // evita doppi destroy
+        pergaperta = false;
+    }
 }
 
 function destroy(s) {

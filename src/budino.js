@@ -3,12 +3,11 @@ let budino;
 let can_create_budino = true;
 
 function preload_budino(s) {
-   img_budino = PP.assets.image.load(s, "assets/images/budino.png");
+   img_budino = PP.assets.sprite.load_spritesheet(s, "assets/images/budino.png", 91, 88);
 }
 
 
 function collision_budino(s, player, budino) {
-   //PP.physics.set_collision_rectangle(player, 180, 410, 150, 50);  // per regolare la hitbox del mio player
    player.is_on_budino = true;
   
    if(PP.interactive.kb.is_key_down(s, PP.key_codes.SPACE)) {
@@ -24,20 +23,18 @@ function create_budino(s) {
    if (!can_create_budino || curr_budini <= 0) return;
    if (!player.is_on_floor && !player.is_on_platform && !player.is_on_casa) return; // non va se player in aria
 
-   budino = PP.assets.image.add(s, img_budino, player.geometry.x+10, player.geometry.y-100, 0, 0);
-   budino.geometry.scale_x = 0.3;
-   budino.geometry.scale_y = 0.3;
+   budino = PP.assets.sprite.add(s, img_budino, player.geometry.x+10, player.geometry.y-100, 0, 0);
    PP.physics.add(s, budino, PP.physics.type.STATIC); // nella fisica il giocatore deve essere un'entità dinamica
    PP.physics.add_collider_f(s, player, budino, collision_budino);
-   PP.physics.set_collision_rectangle(budino, 10, 40, 40, 30);
+   PP.physics.set_collision_rectangle(budino, 30, 50, 30, 18);
+   PP.assets.sprite.animation_add(budino, "budino", 0, 1, 1, -1);  
+   PP.assets.sprite.animation_play(budino, "budino");
 
    PP.game_state.set_variable("budini", curr_budini - 1);
 
    // Blocca la creazione temporaneamente
    can_create_budino = false;
    PP.timers.add_timer(s, 1000, () => {can_create_budino = true}, false);
-   //PP.timers.add_timer(s, 100, enable_budino_creation, false);
-   //PP.timers.add_timer(s, 500, () => {enable_budino_creation = false}, false);
 }
 
 function enable_budino_creation(s) { // Funzione che viene chiamata allo scadere del timer

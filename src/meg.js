@@ -7,7 +7,8 @@ next_meg = curr_meg;
 
 let meg_keyP_last = false;
 let meg_keyC_last = false;
-let meg_c_premuta = false;  // C premuto solo una volta
+let meg_p_premuto = false;
+let meg_c_premuto = false;  // C premuto solo una volta
 let meg_p_bloccato = false; // P bloccato dopo che C è stato premuto
 
 function preload_meg (s){
@@ -36,36 +37,25 @@ function finedialogo(s) {
   PP.assets.sprite.animation_play(meg, "vuoto");
 }
 
-function update_meg (s) {
-    if(PP.interactive.kb.is_key_down(s, PP.key_codes.P)) {
-        curr_meg = "padella";
-        PP.assets.sprite.animation_play(meg, "padella");
-        PP.timers.add_timer(s, 800, finepadella, false);
-    }
-    if(PP.interactive.kb.is_key_down(s, PP.key_codes.C)) {
-        curr_meg = "sparisce";
-        PP.assets.sprite.animation_play(meg, "sparisce");
-        PP.timers.add_timer(s, 1000, finedialogo, false);
-    }
-
-}
-
 function update_meg(s) {
     let meg_keyP_now = PP.interactive.kb.is_key_down(s, PP.key_codes.P);
     if (meg_keyP_now && !meg_keyP_last && !meg_p_bloccato) {
         curr_meg = "padella";
         PP.assets.sprite.animation_play(meg, "padella");
         PP.timers.add_timer(s, 800, finepadella, false);
+
+        meg_p_premuto = true; // P è stato premuto
     }
     meg_keyP_last = meg_keyP_now;
 
     let meg_keyC_now = PP.interactive.kb.is_key_down(s, PP.key_codes.C);
-    if (meg_keyC_now && !meg_keyC_last && !meg_c_premuta) {
+    if (meg_keyC_now && !meg_keyC_last && meg_p_premuto && !meg_c_premuto) {
+        // ora C funziona solo se P è stato premuto
         curr_meg = "sparisce";
         PP.assets.sprite.animation_play(meg, "sparisce");
         PP.timers.add_timer(s, 1000, finedialogo, false);
 
-        meg_c_premuta = true;
+        meg_c_premuto = true;
         meg_p_bloccato = true;
     }
     meg_keyC_last = meg_keyC_now;

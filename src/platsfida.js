@@ -17,7 +17,7 @@ function collision_platsfida(s, player, platsfida) {
 function danno_platsfida(s, player) { //funziona esattamente come danno dell'enemy
     if (player_immunity) return;
     player_immunity = true;
-    PP.timers.add_timer(s, 1500, () => { player_immunity = false; }, false);
+    PP.timers.add_timer(s, 1000, () => { player_immunity = false; }, false);
     move_disable = true;
     jump_disable = true;
     let vite = PP.game_state.get_variable("cuori");
@@ -26,7 +26,7 @@ function danno_platsfida(s, player) { //funziona esattamente come danno dell'ene
         morte(s);
     } else {
         next_anim = "hurt";
-        PP.timers.add_timer(s, 1500, () => {
+        PP.timers.add_timer(s, 1000, () => {
             move_disable = false;
             jump_disable = false;
             next_anim = "stop";
@@ -34,23 +34,24 @@ function danno_platsfida(s, player) { //funziona esattamente come danno dell'ene
     }
 }
 
+
 function collision_platsfida_flip(s, player, platsfida) {
     // evita ri-trigger mentre è già in animazione
     if (!platsfida.is_flipping) {
         platsfida.is_flipping = true;
         // dopo tot diventa pericolosa
-        PP.timers.add_timer(s, 2000, () => {
+        PP.timers.add_timer(s, 1500, () => {
             platsfida.geometry.flip_y = true;
             platsfida.is_deadly = true;
         }, false);
         // dopo tot ritorna normale (lo sommo al timer del flip)
-        PP.timers.add_timer(s, 5000, () => {
+        PP.timers.add_timer(s, 3000, () => {
             platsfida.geometry.flip_y = false;
             platsfida.is_deadly = false;
             platsfida.is_flipping = false; // così ritorna ad essere pronta per il prossimo contatto
         }, false);
     }
-    player.is_on_platsfida = true;
+    player.is_on_platform = true;
     if (platsfida.is_deadly) {
         danno_platsfida(s, player);
     }
@@ -79,7 +80,7 @@ function create_platsfida(s, player) {
     PP.physics.add_collider_f(s, player, platsfida5, collision_platsfida);
     PP.physics.set_collision_rectangle(platsfida5, 100, 20, 0, 4);
 
-    platsfida6 = PP.assets.image.add(s, img_platsfida2, 2000, 3180, 0, 0);
+    platsfida6 = PP.assets.image.add(s, img_platsfida2, 1950, 3180, 0, 0);
     PP.physics.add(s, platsfida6, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(platsfida6, true);
     PP.physics.set_allow_gravity(platsfida6, false); 
@@ -91,36 +92,28 @@ function create_platsfida(s, player) {
     PP.physics.set_allow_gravity(platsfida7, false); 
     PP.physics.add_collider_f(s, player, platsfida7, collision_platsfida_flip);
     PP.physics.set_collision_rectangle(platsfida7, 80, 20, 10, 4); 
-    platsfida8 = PP.assets.image.add(s, img_platsfida2, 2200, 3550, 0, 0); //ok
+    platsfida8 = PP.assets.image.add(s, img_platsfida2, 2100, 3550, 0, 0); //ok
     PP.physics.add(s, platsfida8, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(platsfida8, true);
     PP.physics.set_allow_gravity(platsfida8, false); 
     PP.physics.add_collider_f(s, player, platsfida8, collision_platsfida_flip);
     PP.physics.set_collision_rectangle(platsfida8, 80, 20, 10, 4); 
 
-    platsfida9 = PP.assets.image.add(s, img_platsfida3, 2000, 3080, 0, 0);
-    PP.physics.add(s, platsfida9, PP.physics.type.DYNAMIC); 
-    PP.physics.set_immovable(platsfida9, true);
-    PP.physics.set_allow_gravity(platsfida9, false); 
-    PP.physics.add_collider_f(s, player, platsfida9, collision_platsfida_flip);
-    PP.physics.set_collision_rectangle(platsfida9, 50, 20, 0, 4); 
+    platsfida9 = PP.assets.image.add(s, img_platsfida3, 1800, 3080, 0, 0);
+    PP.physics.add(s, platsfida9, PP.physics.type.STATIC); 
+    PP.physics.add_collider_f(s, player, platsfida9, collision_platsfida);
+    PP.physics.set_collision_rectangle(platsfida9, 50, 20, 0, 4);
     platsfida10 = PP.assets.image.add(s, img_platsfida3, 2200, 3300, 0, 0);
-    PP.physics.add(s, platsfida10, PP.physics.type.DYNAMIC); 
-    PP.physics.set_immovable(platsfida10, true);
-    PP.physics.set_allow_gravity(platsfida10, false); 
-    PP.physics.add_collider_f(s, player, platsfida10, collision_platsfida_flip);
-    PP.physics.set_collision_rectangle(platsfida10, 50, 20, 0, 4); 
-    platsfida11 = PP.assets.image.add(s, img_platsfida3, 1900, 3300, 0, 0);
-    PP.physics.add(s, platsfida11, PP.physics.type.DYNAMIC); 
-    PP.physics.set_immovable(platsfida11, true);
-    PP.physics.set_allow_gravity(platsfida11, false); 
-    PP.physics.add_collider_f(s, player, platsfida11, collision_platsfida_flip);
-    PP.physics.set_collision_rectangle(platsfida11, 50, 20, 0, 4); 
+    PP.physics.add(s, platsfida10, PP.physics.type.STATIC); 
+    PP.physics.add_collider_f(s, player, platsfida10, collision_platsfida);
+    PP.physics.set_collision_rectangle(platsfida10, 50, 20, 0, 4);
+    platsfida11 = PP.assets.image.add(s, img_platsfida3, 1850, 3300, 0, 0);
+    PP.physics.add(s, platsfida11, PP.physics.type.STATIC); 
+    PP.physics.add_collider_f(s, player, platsfida11, collision_platsfida);
+    PP.physics.set_collision_rectangle(platsfida11, 50, 20, 0, 4);
     platsfida12 = PP.assets.image.add(s, img_platsfida3, 1700, 3400, 0, 0);
-    PP.physics.add(s, platsfida12, PP.physics.type.DYNAMIC); 
-    PP.physics.set_immovable(platsfida12, true);
-    PP.physics.set_allow_gravity(platsfida12, false); 
-    PP.physics.add_collider_f(s, player, platsfida12, collision_platsfida_flip);
-    PP.physics.set_collision_rectangle(platsfida12, 50, 20, 0, 4); 
+    PP.physics.add(s, platsfida12, PP.physics.type.STATIC); 
+    PP.physics.add_collider_f(s, player, platsfida12, collision_platsfida);
+    PP.physics.set_collision_rectangle(platsfida12, 50, 20, 0, 4);
 
 }

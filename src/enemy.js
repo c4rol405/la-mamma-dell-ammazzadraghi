@@ -3,7 +3,7 @@ let img_enemy;
 let fantasma1, fantasma2, fantasma3, fantasma4, fantasma5;
 
 function preload_enemy (s){
-   img_enemy = PP.assets.sprite.load_spritesheet(s, "assets/images/enemy.png", 106, 106);
+   img_enemy = PP.assets.sprite.load_spritesheet(s, "assets/images/fant.png", 130, 126);
    
 }
 
@@ -32,9 +32,9 @@ function danno_player(s, fantasma, player) {
             PP.physics.set_immovable(player, false);
             next_anim = "stop";
         }, false);
-        PP.timers.add_timer (s, 1550, () => {
+        PP.timers.add_timer(s, 1550, () => {
             player_immunity = false;
-    }, false);
+        }, false);
     }
 }
 
@@ -43,64 +43,64 @@ function create_enemy (s, player) {
     PP.physics.add(s, fantasma1, PP.physics.type.DYNAMIC); PP.physics.set_immovable(fantasma1, true); PP.physics.set_allow_gravity(fantasma1, false);  
     PP.physics.set_velocity_x(fantasma1, 200);
     PP.physics.set_velocity_y(fantasma1, 50);
-    PP.physics.set_collision_rectangle(fantasma1, 80, 80, 14, 28); PP.physics.add_overlap_f(s, fantasma1, player, danno_player);
-    PP.assets.sprite.animation_add(fantasma1, "normale", 0, 9, 6, -1); PP.assets.sprite.animation_play(fantasma1, "normale");
+    PP.physics.set_collision_rectangle(fantasma1, 70, 70, 30, 30); PP.physics.add_overlap_f(s, fantasma1, player, danno_player);
+    PP.assets.sprite.animation_add(fantasma1, "base", 0, 6, 6, -1); PP.assets.sprite.animation_play(fantasma1, "base");
 
     fantasma2 = PP.assets.sprite.add(s, img_enemy, 4550, 5300, 0, 1);
     PP.physics.add(s, fantasma2, PP.physics.type.DYNAMIC); PP.physics.set_immovable(fantasma2, true); PP.physics.set_allow_gravity(fantasma2, false);  
     PP.physics.set_velocity_x(fantasma2, 200);
     PP.physics.set_velocity_y(fantasma2, 50);
-    PP.physics.set_collision_rectangle(fantasma2, 80, 80, 14, 28); PP.physics.add_overlap_f(s, fantasma2, player, danno_player);
-    PP.assets.sprite.animation_add(fantasma2, "verde", 20, 29, 6, -1); PP.assets.sprite.animation_play(fantasma2, "verde");
+    PP.physics.set_collision_rectangle(fantasma2, 70, 70, 30, 30); PP.physics.add_overlap_f(s, fantasma2, player, danno_player);
+    PP.assets.sprite.animation_add(fantasma2, "base", 0, 6, 6, -1); PP.assets.sprite.animation_play(fantasma2, "base");
 
     fantasma3 = PP.assets.sprite.add(s, img_enemy, 3100, 5500, 0, 1);
     PP.physics.add(s, fantasma3, PP.physics.type.DYNAMIC); PP.physics.set_immovable(fantasma3, true); PP.physics.set_allow_gravity(fantasma3, false);  
     PP.physics.set_velocity_x(fantasma3, 200);
     PP.physics.set_velocity_y(fantasma3, 50);
-    PP.physics.set_collision_rectangle(fantasma3, 80, 80, 14, 28); PP.physics.add_overlap_f(s, fantasma3, player, danno_player);
-    PP.assets.sprite.animation_add(fantasma3, "rosso", 10, 19, 6, -1); PP.assets.sprite.animation_play(fantasma3, "rosso");
+    PP.physics.set_collision_rectangle(fantasma3, 70, 70, 30, 30); PP.physics.add_overlap_f(s, fantasma3, player, danno_player);
+    PP.assets.sprite.animation_add(fantasma3, "base", 0, 6, 6, -1); PP.assets.sprite.animation_play(fantasma3, "base");
     
     fantasma4 = PP.assets.sprite.add(s, img_enemy, 5800, 4800, 0, 1);
     PP.physics.add(s, fantasma4, PP.physics.type.DYNAMIC); PP.physics.set_immovable(fantasma4, true); PP.physics.set_allow_gravity(fantasma4, false);  
     PP.physics.set_velocity_x(fantasma4, 200);
     PP.physics.set_velocity_y(fantasma4, 30);
-    PP.physics.set_collision_rectangle(fantasma4, 80, 80, 14, 28); PP.physics.add_overlap_f(s, fantasma4, player, danno_player);
-    PP.assets.sprite.animation_add(fantasma4, "blu", 30, 39, 6, -1); PP.assets.sprite.animation_play(fantasma4, "blu");
+    PP.physics.set_collision_rectangle(fantasma4, 70, 70, 30, 30); PP.physics.add_overlap_f(s, fantasma4, player, danno_player);
+    PP.assets.sprite.animation_add(fantasma4, "base", 0, 6, 6, -1); PP.assets.sprite.animation_play(fantasma4, "base");
     
     fantasma5 = PP.assets.sprite.add(s, img_enemy, 2600, 1230, 0, 1);
     PP.physics.add(s, fantasma5, PP.physics.type.DYNAMIC); PP.physics.set_immovable(fantasma5, true); PP.physics.set_allow_gravity(fantasma5, false);  
     PP.physics.set_velocity_x(fantasma5, 200);
     PP.physics.set_velocity_y(fantasma5, 50);
-    PP.physics.set_collision_rectangle(fantasma5, 80, 80, 14, 28); PP.physics.add_overlap_f(s, fantasma5, player, danno_player);
+    PP.physics.set_collision_rectangle(fantasma5, 70, 70, 30, 30); PP.physics.add_overlap_f(s, fantasma5, player, danno_player);
     PP.assets.sprite.animation_add(fantasma5, "normale", 0, 9, 6, -1); PP.assets.sprite.animation_play(fantasma5, "normale");
 
     fantasma6 = PP.assets.sprite.add(s, img_enemy, 5200, 1900, 0, 1);
     PP.physics.add(s, fantasma6, PP.physics.type.DYNAMIC); PP.physics.set_immovable(fantasma6, true); PP.physics.set_allow_gravity(fantasma6, false);  
     PP.physics.set_velocity_x(fantasma6, 200);
     PP.physics.set_velocity_y(fantasma6, 30);
-    PP.physics.set_collision_rectangle(fantasma6, 80, 80, 14, 28); PP.physics.add_overlap_f(s, fantasma6, player, danno_player);
-    PP.assets.sprite.animation_add(fantasma6, "blu", 30, 39, 6, -1); PP.assets.sprite.animation_play(fantasma6, "blu");
+    PP.physics.set_collision_rectangle(fantasma6, 70, 70, 30, 30); PP.physics.add_overlap_f(s, fantasma6, player, danno_player);
+    PP.assets.sprite.animation_add(fantasma6, "base", 0, 6, 6, -1); PP.assets.sprite.animation_play(fantasma6, "base");
     
     fantasma7 = PP.assets.sprite.add(s, img_enemy, 5800, 1850, 0, 1);
     PP.physics.add(s, fantasma7, PP.physics.type.DYNAMIC); PP.physics.set_immovable(fantasma7, true); PP.physics.set_allow_gravity(fantasma7, false);  
     PP.physics.set_velocity_x(fantasma7, 200);
     PP.physics.set_velocity_y(fantasma7, 50);
-    PP.physics.set_collision_rectangle(fantasma7, 80, 80, 14, 28); PP.physics.add_overlap_f(s, fantasma7, player, danno_player);
-    PP.assets.sprite.animation_add(fantasma7, "normale", 0, 9, 6, -1); PP.assets.sprite.animation_play(fantasma7, "normale");
+    PP.physics.set_collision_rectangle(fantasma7, 70, 70, 30, 30); PP.physics.add_overlap_f(s, fantasma7, player, danno_player);
+    PP.assets.sprite.animation_add(fantasma7, "base", 0, 6, 6, -1); PP.assets.sprite.animation_play(fantasma7, "base");
 
     fantasma8 = PP.assets.sprite.add(s, img_enemy, 4050, 1650, 0, 1);
     PP.physics.add(s, fantasma8, PP.physics.type.DYNAMIC); PP.physics.set_immovable(fantasma8, true); PP.physics.set_allow_gravity(fantasma8, false);  
     PP.physics.set_velocity_x(fantasma8, 200);
     PP.physics.set_velocity_y(fantasma8, 50);
-    PP.physics.set_collision_rectangle(fantasma8, 80, 80, 14, 28); PP.physics.add_overlap_f(s, fantasma8, player, danno_player);
-    PP.assets.sprite.animation_add(fantasma8, "normale", 0, 9, 6, -1); PP.assets.sprite.animation_play(fantasma8, "normale");
+    PP.physics.set_collision_rectangle(fantasma8, 70, 70, 30, 30); PP.physics.add_overlap_f(s, fantasma8, player, danno_player);
+    PP.assets.sprite.animation_add(fantasma8, "base", 0, 6, 6, -1); PP.assets.sprite.animation_play(fantasma8, "base");
 
     fantasma9 = PP.assets.sprite.add(s, img_enemy, 1700, 2300, 0, 1);
     PP.physics.add(s, fantasma9, PP.physics.type.DYNAMIC); PP.physics.set_immovable(fantasma9, true); PP.physics.set_allow_gravity(fantasma9, false);  
     PP.physics.set_velocity_x(fantasma9, 200);
     PP.physics.set_velocity_y(fantasma9, 50);
-    PP.physics.set_collision_rectangle(fantasma9, 80, 80, 14, 28); PP.physics.add_overlap_f(s, fantasma9, player, danno_player);
-    PP.assets.sprite.animation_add(fantasma9, "normale", 0, 9, 6, -1); PP.assets.sprite.animation_play(fantasma9, "normale");
+    PP.physics.set_collision_rectangle(fantasma9, 70, 70, 30, 30); PP.physics.add_overlap_f(s, fantasma9, player, danno_player);
+    PP.assets.sprite.animation_add(fantasma9, "base", 0, 6, 6, -1); PP.assets.sprite.animation_play(fantasma9, "base");
 }
 
 function update_enemy(s) {
