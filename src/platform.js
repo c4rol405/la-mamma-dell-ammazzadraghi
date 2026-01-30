@@ -495,6 +495,15 @@ function create_platform(s, player) {
     PP.physics.add(s, platform87, PP.physics.type.STATIC); 
     PP.physics.add_collider_f(s, player, platform87, collision_platform);
     PP.physics.set_collision_rectangle(platform87, 120, 50, 16, 16);
+
+    platform88 = PP.assets.image.add(s, img_platform7, 750, 4400, 0, 0);
+    PP.physics.add(s, platform88, PP.physics.type.STATIC); 
+    PP.physics.add_collider_f(s, player, platform88, collision_platform);
+    PP.physics.set_collision_rectangle(platform88, 120, 50, 16, 16);
+    platform89 = PP.assets.image.add(s, img_platform7, 870, 4800, 0, 0);
+    PP.physics.add(s, platform89, PP.physics.type.STATIC); 
+    PP.physics.add_collider_f(s, player, platform89, collision_platform);
+    PP.physics.set_collision_rectangle(platform89, 120, 50, 16, 16);
 }
 
 function update_platform(s) {

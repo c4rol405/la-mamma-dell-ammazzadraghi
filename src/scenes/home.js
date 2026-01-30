@@ -14,7 +14,16 @@ function preload (s) {
     game = PP.assets.image.load(s, "assets/situe/pulsantegame.png");
 }
 
+function reset_totale_game_state() {
+    PP.game_state.set_variable("cuori", 3);
+    PP.game_state.set_variable("budini", 7);
+    PP.game_state.set_variable("consapevolezza", 0);
+    PP.game_state.set_variable("vetri_presi", {});
+}
+
+
 function create (s){
+    reset_totale_game_state();
     sfondo = PP.assets.image.add(s, sfondo_home, 0, 0, 0, 0);
 
     pulsante_storia = PP.assets.image.add(s, storia, 220, 350, 0.5, 0.5);

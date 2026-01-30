@@ -88,7 +88,10 @@ function update(s) {
         }
     }
 
-
+    if(PP.interactive.kb.is_key_down(s, PP.key_codes.T)) {
+        PP.scenes.start("finalecorretto");
+    }
+    //nel caso nella pres diventasse tanto lungo da giocare
 
 }
 
